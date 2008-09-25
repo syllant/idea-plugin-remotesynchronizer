@@ -1,0 +1,170 @@
+ ---+ <nop>%TOPIC%
+
+ ---++ What it is ?
+
+ <nop>RemoteSynchronizer plugin allows you to synchronize files with remote locations. It extends the RemoteCopier plugin, which only copies added/modified files. <nop>RemoteSynchronizer plugin also deletes obsolete files on remote locations.
+
+ ---++ How to use it ?
+
+ This plugin is based on paths mappings linking project files/dirs and their target(s). After you have configured these paths in the project settings, you just invoke one of the <nop>RemoteSynchronizer actions, using popup menu from any files selection, from the project view pane or from current editor :
+    * Synchronize this : synchronize all selected files/dirs
+    * Synchronize all opened : synchronize all files opened in editors
+    * Synchronize all : synchronize all files in the project.
+
+ First, obsolete files, i.e. files which no longer exist within the projet, will be deleted within destination directories mapped with selected directories. Then, selected files which are included in paths mappings will be copied if their date is different from the date of their target. All operations will be logged in dedicated consoles.
+
+ NB : to synchronize a java class file, you can select the source file (e.g. from current editor) as well as the class file (cf samples).
+
+ ---+++ Settings (v1.4.1)
+ Settings may be defined from Project settings panel.
+
+ Import/Export buttons allow to backup plugin configuration using XML files. However, because of lack of OpenAPI, paths are written as absolute and not relative from project root :-(
+
+ ---++++ Mappings configuration
+ %ATTACHURL%/mapping-settings.png
+
+ Paths mappings are gathered within targets.
+ These targets can be activated/deactived at any time. For example, you could define a target for your development server and another for a test server.
+ Synchronizations will be launched for all *active* targets. Each target is linked to one console at least (a new console may be created when existing console is busy). Targets are renamed by double-clicking on tab titles.
+
+
+ ---+++++ Synchronization mappings
+ Synchronizations are configured from paths mappings : these mappings link sources paths which to synchronize with their target paths. When a file is synchronized, the closest matching definition is used. Note that this means that you have to use different targets to synchronize a file with different locations. For a given target, a file will be copied at most one time, using the best matching mapping.
+
+ Concerning java classes, you have to configure output paths and not source paths. However, as written above, you may select java source files for the synchronization actions.
+
+ The third attribute of mappings defines if obsolete files should be deleted at the start of the synchronization for this mapping. Files are considered as obsolete when they are found on remote locations but not in your project, according the paths mappings. *This must be used carefully* : if you aren't the only one to work on these remote locations, you could delete files produced by others !
+
+ ---+++++ Paths excluded from copy
+ You can prevent some files to be copied using <nop>ANT pattern. For example, to prevent java source files to be copied, you will write _**/*.java_, and for <nop>CVS files _**/CVS/*_.
+
+ ---+++++ Paths excluded from deletion
+ You can also prevent some files to be deleted on remote location. You will also use <nop>ANT patterns.
+
+ ---++++ General settings
+ %ATTACHURL%/general-settings.png
+
+    * _Simulation mode_ : you should start by activing this option if you are not sure of your configuration. Synchronizations will be logged (in italic) so you can check what will occur but no copy or deletion will be launched.
+    * _Save before synchronize_ : if checked, _SaveAll_ action will be invoked before synchronization. *Some users requested an option to launch synchronizations after each _Save_ action. Check this option instead ! And forget the standard _Save_ action, just synchronize !*
+    * _Create missing directories_ : if checked, destination directories will be created as needed
+    * _Allow concurrent synchronizations_ : if checked, several synchronizations may be launched in parralel
+
+ ---++++ Logs settings
+ %ATTACHURL%/log-settings.png
+
+    * _Clear before synchronization_ : if checked, console is cleared before each synchronization
+    * _Shows log window when synchronization starts_ : if checked, console is shown when synchronization starts
+    * _Font_ : font used in the console
+    * _Display source paths_ : by default, only the destination path is shown in logs. If checked, you will see the source path too
+    * _Display excluded files_ : if you activate this option, you will see files which are excluded from synchronization in logs
+    * _Display identical files_ : if you activate this option, you will see files which are already synchronized
+
+ ---+++ Samples (to update)
+
+ Using the settings from the screenshot, and considering =c:\project\classes=
+ being the output path for =c:\project\src=  :
+
+ | *If you select* (1) | *File will be copied to* (1) |
+ | c:\project\jsp\login\index.jsp | d:\deployed\web\jsp\login\index.jsp |
+ | c:\project\classes\Foo.class | d:\deployed\WEB-INF\classes\Foo.class |
+ | c:\project\src\Foo.java | d:\deployed\WEB-INF\classes\Foo.class _(2)_ |
+ | c:\project\src\Snoop.java | excluded |
+ | c:\project\src\test\FooTest.java | excluded |
+ | c:\project\readme.txt | d:\deployed\readme _(3)_ |
+ | c:\project\history.txt | d:\deployed\docs\history.txt _(3)_ |
+
+ __Comments :__
+
+ (1) : paths must be absolute. However, they will be stored as relative to the project file if you have checked this option in the project settings (from the paths pane)
+
+ (2) : a java class may be copied from source file or class file. Not that if you select source file, inner classes will be automatically copied with the main  lass but the source file itself will be copied (unless you put it in excluded paths, which you will generally do)
+
+ (3) : when a mapping is defined with a source path corresponding to a file and a destination path which does not end with a '/', the destination path is considered as being the destination file. With a '/' at the end, the destination path is considered as being the parent directory of the file
+
+ ---+++ Console
+
+ <nop>RemoteSynchronizer actions are always logged in the target consoles, so you can check what is being deleted or copied and where. As <nop>OpenAPI does not provide access to the status bar, you have to check logs console to see the copy result. However, the console pane is automatically shown when errors occur. As soon as the status bar will be accessible, this behavior will be improved.
+
+ Synchronizations are executed in background. Several Synchronizations may be launched in parallel. You can use buttons in console pane to stop, interrupt or resume them.
+
+ Note that when a file is being copied, there's no way to cancel its copy. *The cancel button stops the copy after the current file has been copied*.
+
+ __Copy symbols :__
+
+ Symbols placed before paths give some information about current operations.
+ Their meaning is given at the top of the console :
+
+    * (/) : destination file did exist, it was replaced
+    * (+) : destination file did not exist, it was created
+    * (-) : source file did not exist, destination file was deleted
+    * (=) : destination file and source file have the same date, they are
+    considered as being identical, file is not copied
+    * (?) : selected file is a java source not compiled, so its class file
+    can't be copied
+    * (^) : selected file is not included in the settings
+
+ ---++ Plugins installation
+
+    * Download the plugin jar file (see below) in your ==IntelliJ/plugins== directory.
+    * Restart IDEA
+    * Open a project and configure the plugin in the project settings
+
+ ---++ Credits
+
+ Thanks to Messia for the icons (messia@wanadoo.fr)
+
+ ---++ To do
+    * Show synchronization result inside status bar (as soon as OpenAPI will allow it)
+
+ ---++ Change history
+    * *1.5* (28 Sept. 2007)
+       * Compiled with Java 6
+       * Fix : replaced some deprecated usages
+
+    * *1.4.1* (24 Jan. 2006)
+       * Fix : bug when checking that source path was not child of destination path
+
+    * *1.4* (27 Apr. 2005)
+       * Rebuilt for EAP 3311 because of JDom upgrade
+
+    * *1.3* (15 Dec. 2004)
+       * New : Added a Rerun button
+       * New : Added an option to popup console before synchronizations
+       * New : Added an option to clear console before synchronizations
+       * New : Added an option to deactivate concurrent synchronizations
+       * New : Added an option to hide identical files inside logs
+
+    * *1.2* (26 Aug. 2004)
+       * Fix: Files were not synchronized when case used in mappings didn't match with system case
+       * New : Added Import/Export settings function
+
+    * *1.1.2* (6 Aug. 2004)
+       * Fix: plugin.xml updated to make the plugin available for both 4.0x/4.5x
+
+    * *1.1.1* (27 Feb. 2004)
+       * Fix: in project view, _Synchronize this_ synchronized whole selected module instead of selected file(s)
+
+    * *1.1* (26 Feb. 2004)
+       * Fix: updated to work with Idea 4.0
+       * New : action _Synchronize this_ works on module elements inside Project view
+
+    * *1.0.4* (8 Dec. 2003)
+       * Fix: updated to work with new module-based configuration (tested with b977)
+
+    * *1.0.3* (15 Jul. 2003)
+       * Fix: bug in computing destination path when source path contains an included path which is not in its file tree (eg. src=/test/webinf/test.xml, included=/test/web, src path is not concerned with included path definition !)
+       * Fix: trailing \ or / are preserved after path definition
+
+    * *1.0.2* (14 Jul. 2003)
+       * Fix: works with Ariadna (3.0.x) as well as Aurora
+
+    * *1.0.1* (11 Jul. 2003) / Aurora
+       * Fix: crash when classes were copied, introduced with new OpenAPI
+
+    * *1.0* (14 Apr. 2003) / Aurora 823- [Changes from RemoteCopier 1.1.1]
+       * New : synchronization, i.e. obsolete files may be deleted
+       * New : excluded paths must be specified as <nop>ANT patterns
+       * New : simulation mode
+
+ __Related Topics:__ PluginDocumentation, ProjectPluginTemplate, OpenAPI, IntellijPluginDocumentation, PluginDeployment, IdeasForPlugins
+

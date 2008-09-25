@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module relativePaths="true" type="JAVA_MODULE" version="4">
+  <component name="LvcsConfiguration">
+    <option name="LOCAL_VCS_ENABLED" value="true" />
+    <option name="LOCAL_VCS_PURGING_PERIOD" value="259200000" />
+    <option name="SHOW_CHANGES_ONLY" value="false" />
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="false">
+    <output url="file://$MODULE_DIR$/../root/classes/main" />
+    <output-test url="file://$MODULE_DIR$/../root/classes/junit" />
+    <content url="file://$MODULE_DIR$/../root">
+      <sourceFolder url="file://$MODULE_DIR$/../root/src/junit" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../root/src/main" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../root/sub-module1/src/junit" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../root/sub-module1/src/main" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../root/sub-module2/src/main" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
+

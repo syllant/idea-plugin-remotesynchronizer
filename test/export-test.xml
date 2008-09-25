@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RemoteSynchronizerSettings>
+  <targets>
+    <target active="true" name="Défaut">
+      <synchro-mappings>
+        <path src="D:/_syfranco/perso/dev/RemoteSynchronizer/docs" dest="D:/_syfranco/perso/dev/RemoteSynchronizer/c:" delete-obsolete-files="false" />
+      </synchro-mappings>
+      <excluded-copy-paths>
+        <path src="**/.dependency-info/*" />
+        <path src="**/*.java" />
+      </excluded-copy-paths>
+      <excluded-delete-paths>
+        <path src="aa" />
+      </excluded-delete-paths>
+    </target>
+    <target active="true" name="Défaut (1)">
+      <synchro-mappings />
+      <excluded-copy-paths>
+        <path src="**/.dependency-info/*" />
+        <path src="**/*.java" />
+      </excluded-copy-paths>
+      <excluded-delete-paths />
+    </target>
+  </targets>
+  <general-options save-before-copy="true" create-missing-dirs="true" simulation-mode="false" allow_concurrent_runs="false" />
+  <log-options autoPopup="true" clearBeforeSynchro="false" showExcludedPaths="false" showIdenticalPaths="true" showSrcPaths="false" fontFamily="Monospaced" fontSize="12" />
+</RemoteSynchronizerSettings>
+

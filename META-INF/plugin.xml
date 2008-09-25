@@ -1,0 +1,101 @@
+<idea-plugin url="http://www.intellij.org/twiki/bin/view/Main/RemoteSynchronizer">
+  <name>RemoteSynchronizer</name>
+  <description>Synchronize your files with remote locations</description>
+  <version>@PLUGIN_VERSION@</version>
+  <vendor email="sylfradev@yahoo.fr">Sylvain FRANCOIS</vendor>
+  <idea-version since-build="8000"/>
+  <change-notes><![CDATA[<html>
+      Upgraded for 8.0 release, this release won't work with 7.0.
+      <ul>
+        <li>New : option to store relative paths instead of absolute paths</li>
+        <li>New : tables usability improved (double-click on row opens dialog, tooltip with full path)</li>
+        <li>New : excluded **/.svn by default</li>
+        <li>New : import/export format has changed, it used new Idea serialization API</li>
+        <li>Fix : removed Hide button on tool window</li>
+      </ul>
+    </html>]]></change-notes>
+
+  <project-components>
+    <component>
+      <implementation-class>org.sylfra.idea.plugins.remotesynchronizer.RemoteSynchronizerPlugin</implementation-class>
+      <option name="workspace" value="true"/>
+    </component>
+    <component>
+      <implementation-class>
+        org.sylfra.idea.plugins.remotesynchronizer.utils.ConfigExternalizer
+      </implementation-class>
+    </component>
+  </project-components>
+
+  <extensions xmlns="com.intellij">
+    <projectService
+      serviceInterface="org.sylfra.idea.plugins.remotesynchronizer.utils.ConfigStateComponent"
+      serviceImplementation="org.sylfra.idea.plugins.remotesynchronizer.utils.ConfigStateComponent"/>
+  </extensions>
+
+  <!-- Component's actions -->
+  <actions>
+    <group id="RemoteSynchronizerWindow" text="RemoteSynchronizer" popup="true">
+      <action id="RemoteSynchronizer.RerunLastSynchroAction"
+        class="org.sylfra.idea.plugins.remotesynchronizer.actions.toolbar.RerunLastSynchroAction"
+        text="Rerun last synchronization"
+        description="Rerun last synchronization"
+        icon="/actions/refreshUsages.png">
+      </action>
+      <action id="RemoteSynchronizer.ThreadStopAction"
+        class="org.sylfra.idea.plugins.remotesynchronizer.actions.toolbar.ThreadStopAction"
+        text="Stop remote synchronizing"
+        description="Stop remote synchronizing"
+        icon="/actions/suspend.png">
+      </action>
+      <action id="RemoteSynchronizer.ThreadInterruptAction"
+        class="org.sylfra.idea.plugins.remotesynchronizer.actions.toolbar.ThreadInterruptAction"
+        text="Interrupt remote synchronizing"
+        description="Interrupt remote synchronizing"
+        icon="/actions/pause.png">
+      </action>
+      <action id="RemoteSynchronizer.ThreadResumeAction"
+        class="org.sylfra.idea.plugins.remotesynchronizer.actions.toolbar.ThreadResumeAction"
+        text="Resume remote synchronizing"
+        description="Resume remote synchronizing"
+        icon="/actions/resume.png">
+      </action>
+      <action id="RemoteSynchronizer.ConsoleClearAction"
+        class="org.sylfra.idea.plugins.remotesynchronizer.actions.toolbar.ConsoleClearAction"
+        text="Clear console"
+        description="Clear console"
+        icon="/actions/gc.png">
+      </action>
+      <action id="RemoteSynchronizer.ConsoleRemoveAction"
+        class="org.sylfra.idea.plugins.remotesynchronizer.actions.toolbar.ConsoleRemoveAction"
+        text="Remove current tab"
+        description="Remove current tab"
+        icon="/general/remove.png">
+      </action>
+    </group>
+
+    <group id="RemoteSynchronizerActions" text="Remote synchronize" popup="true">
+      <action id="RemoteSynchronize.SynchronizeSelectedAction"
+        class="org.sylfra.idea.plugins.remotesynchronizer.actions.RemoteSynchronizeSelectedAction"
+        text="Synchronize this"
+        description="Do remote synchronization for selected files">
+        <keyboard-shortcut keymap="$default" first-keystroke="control MULTIPLY"/>
+      </action>
+      <action id="RemoteSynchronize.SynchronizeOpenedAction"
+        class="org.sylfra.idea.plugins.remotesynchronizer.actions.RemoteSynchronizeOpenedAction"
+        text="Synchronize all opened"
+        description="Do remote synchronization for all opened files">
+        <keyboard-shortcut keymap="$default" first-keystroke="control shift MULTIPLY"/>
+      </action>
+      <action id="RemoteSynchronize.SynchronizeAllAction"
+        class="org.sylfra.idea.plugins.remotesynchronizer.actions.RemoteSynchronizeAllAction"
+        text="Synchronize all"
+        description="Do remote synchronization for all project files">
+        <keyboard-shortcut keymap="$default" first-keystroke="control alt MULTIPLY"/>
+      </action>
+      <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+      <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+    </group>
+
+  </actions>
+</idea-plugin>

@@ -1,0 +1,11 @@
+\ dbl-click on mappings
+\ relative paths
+\ tooltip to show full paths
+\ auto-completion in paths
+\ hide window
+\ exclude **/.svn/*
+\ config storage format
+\ java.lang.NoSuchMethodError: com.intellij.openapi.roots.ModuleRootManager.getCompilerOutputPath()Lcom/intellij/openapi/vfs/VirtualFile;
+
+
+* show a floating msg instead of window (new option)
