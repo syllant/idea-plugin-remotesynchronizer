@@ -34,14 +34,14 @@ public final class TargetTabbedPane extends JTabbedPane
             nameBox.startEdition(index);
           }
         }
-    }
+      }
     });
 
-}
+  }
 
   public boolean isModified(Config config)
   {
-  // Existings tabs
+    // Existings tabs
     for (int i = 0; i < getComponentCount(); i++)
     {
       TargetTab tab = (TargetTab) getComponentAt(i);
@@ -54,7 +54,7 @@ public final class TargetTabbedPane extends JTabbedPane
       }
     }
 
-  // Deleted tabs
+    // Deleted tabs
     for (TargetMappings targetMappings : config.getTargetMappings())
     {
       if (!containsTab(targetMappings))
@@ -64,7 +64,7 @@ public final class TargetTabbedPane extends JTabbedPane
     }
 
     return false;
-}
+  }
 
   public void reset(Config config)
   {
@@ -75,7 +75,7 @@ public final class TargetTabbedPane extends JTabbedPane
       add(targetMappings.getName(),
         new TargetTab(targetMappings, this, pathsManager, getComponentCount()));
     }
-}
+  }
 
   public void apply(Config config)
   {
@@ -88,7 +88,7 @@ public final class TargetTabbedPane extends JTabbedPane
       tab.getTargetMappings().setName(getTitleAt(i));
       config.getTargetMappings().add(tab.getTargetMappings());
     }
-}
+  }
 
   private boolean containsTab(TargetMappings target)
   {
@@ -101,7 +101,7 @@ public final class TargetTabbedPane extends JTabbedPane
     }
 
     return false;
-}
+  }
 
   private String findNewName()
   {
@@ -137,7 +137,7 @@ public final class TargetTabbedPane extends JTabbedPane
     }
 
     return result;
-}
+  }
 
   public void addTarget()
   {
@@ -151,39 +151,39 @@ public final class TargetTabbedPane extends JTabbedPane
 
     setSelectedComponent(tab);
     nameBox.startEdition(index);
-}
+  }
 
   public Color getForegroundAt(int index)
   {
     TargetTab tab = (TargetTab) getComponentAt(index);
     return tab.isSetAsActive() ? super.getForeground() : Color.gray;
-}
+  }
 
   public void removeTarget()
   {
     remove(getSelectedComponent());
-}
+  }
 
   public void moveTargetToLeft()
   {
     moveTo(getSelectedIndex() - 1);
-}
+  }
 
   public void moveTargetToRight()
   {
     moveTo(getSelectedIndex() + 1);
-}
+  }
 
   private void moveTo(int dest)
   {
     TargetTab tab = (TargetTab) getSelectedComponent();
-  // Title may be different from target's name
+    // Title may be different from target's name
     String title = getTitleAt(getSelectedIndex());
 
     remove(tab);
     insertTab(title, null, tab, null, dest);
     setSelectedIndex(dest);
-}
+  }
 
   // Hum, textField is not editable on a popup menu...
   private class NameBox extends JDialog
@@ -193,6 +193,7 @@ public final class TargetTabbedPane extends JTabbedPane
 
     public NameBox()
     {
+      setModal(true);
       setOpaque(true);
       setUndecorated(true);
       setResizable(false);
@@ -200,7 +201,11 @@ public final class TargetTabbedPane extends JTabbedPane
       tfName = new JTextField();
       tfName.setHorizontalAlignment(JTextField.CENTER);
       tfName.setFont(tfName.getFont().deriveFont(Font.BOLD));
-      getContentPane().add(tfName);
+
+      JPanel panel = new JPanel();
+      panel.add(tfName);
+      setContentPane(panel);
+
       tfName.addKeyListener(new KeyAdapter()
       {
         public void keyPressed(KeyEvent e)
@@ -209,29 +214,29 @@ public final class TargetTabbedPane extends JTabbedPane
           {
             endEdition(false);
           }
-      }
+        }
       });
       tfName.addActionListener(new ActionListener()
       {
         public void actionPerformed(ActionEvent e)
         {
           endEdition(true);
-      }
+        }
       });
       tfName.addFocusListener(new FocusAdapter()
       {
         public void focusLost(FocusEvent e)
         {
           endEdition(true);
-      }
+        }
       });
-  }
+    }
 
     public Dimension getPreferredSize()
     {
-      return new Dimension(getBoundsAt(tabIndex).width,
-        getBoundsAt(tabIndex).height);
-  }
+      return new Dimension(getBoundsAt(tabIndex).width + 2,
+        getBoundsAt(tabIndex).height + 2);
+    }
 
     public void startEdition(int tabIndex)
     {
@@ -248,7 +253,7 @@ public final class TargetTabbedPane extends JTabbedPane
 
       tfName.requestFocus();
       tfName.selectAll();
-  }
+    }
 
     private void endEdition(boolean valid)
     {
