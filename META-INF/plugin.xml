@@ -1,6 +1,9 @@
-<idea-plugin url="http://www.intellij.org/twiki/bin/view/Main/RemoteSynchronizer">
+<idea-plugin url="http://idea-remotesynchronizer.googlecode.com/">
   <name>RemoteSynchronizer</name>
-  <description>Synchronize your files with remote locations</description>
+  <description>RemoteSynchronizer plugin allows you to synchronize files with remote locations.
+    Instead of manually copying files from your project to their runtime location using external
+    tools (command line, file explorer, ...), RemoteSynchronizer launches copies from Idea, using
+    paths customized for project. It is also able to delete obsolete files on remote locations.</description>
   <version>@PLUGIN_VERSION@</version>
   <vendor email="sylfradev@yahoo.fr">Sylvain FRANCOIS</vendor>
   <idea-version since-build="8000"/>
@@ -8,6 +11,7 @@
       Upgraded for 8.0 release, this release won't work with 7.0.
       <ul>
         <li>New : option to store relative paths instead of absolute paths</li>
+        <li>New : auto-completion on paths edition</li>
         <li>New : tables usability improved (double-click on row opens dialog, tooltip with full path)</li>
         <li>New : excluded **/.svn by default</li>
         <li>New : import/export format has changed, it used new Idea serialization API</li>

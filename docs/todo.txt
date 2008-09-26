@@ -6,6 +6,6 @@
 \ exclude **/.svn/*
 \ config storage format
 \ java.lang.NoSuchMethodError: com.intellij.openapi.roots.ModuleRootManager.getCompilerOutputPath()Lcom/intellij/openapi/vfs/VirtualFile;
-
+* target tab rename
 
 * show a floating msg instead of window (new option)
