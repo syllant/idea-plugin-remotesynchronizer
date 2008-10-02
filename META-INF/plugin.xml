@@ -8,14 +8,9 @@
   <vendor email="sylfradev@yahoo.fr">Sylvain FRANCOIS</vendor>
   <idea-version since-build="8000"/>
   <change-notes><![CDATA[<html>
-      Upgraded for 8.0 release, this release won't work with 7.0.
       <ul>
-        <li>New : option to store relative paths instead of absolute paths</li>
-        <li>New : auto-completion on paths edition</li>
-        <li>New : tables usability improved (double-click on row opens dialog, tooltip with full path)</li>
-        <li>New : excluded **/.svn by default</li>
-        <li>New : import/export format has changed, it used new Idea serialization API</li>
-        <li>Fix : removed Hide button on tool window</li>
+        <li>Fix: NPE for Java files when compilation output path were outside from project</li>
+        <li>Fix: tooltips show full paths</li>
       </ul>
     </html>]]></change-notes>
 

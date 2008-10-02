@@ -167,7 +167,7 @@ public class AbstractPathTable extends JTable
         super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
       result.setText(pathManager.toPresentablePath(result.getText()));
-      setToolTipText(result.getText());
+      setToolTipText(pathManager.expandPath(result.getText(), false));
 
       return result;
     }
@@ -210,7 +210,7 @@ public class AbstractPathTable extends JTable
           + ")");
       }
 
-      setToolTipText(presentablePath);
+      setToolTipText(pathManager.expandPath(presentablePath, false));
 
       return result;
     }

@@ -9,7 +9,7 @@
     <output url="file://$MODULE_DIR$/../root/classes/main" />
     <output-test url="file://$MODULE_DIR$/../root/classes/junit" />
     <content url="file://$MODULE_DIR$/../root">
-      <sourceFolder url="file://$MODULE_DIR$/../root/src/junit" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../root/src/junit" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/../root/src/main" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../root/sub-module1/src/junit" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../root/sub-module1/src/main" isTestSource="false" />

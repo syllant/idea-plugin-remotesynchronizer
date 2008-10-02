@@ -48,8 +48,8 @@ public class SynchroMappingDialog extends AbstractPathDialog
     {
       SynchroMapping p = (SynchroMapping) value;
 
-      tfSrcPath.setText(pathManager.toPresentablePath(p.getSrcPath()));
-      tfDestPath.setText(pathManager.toPresentablePath(p.getDestPath()));
+      tfSrcPath.setText(pathManager.expandPath(pathManager.toPresentablePath(p.getSrcPath()), false));
+      tfDestPath.setText(pathManager.expandPath(pathManager.toPresentablePath(p.getDestPath()), false));
       ckDeleteObsolete.setSelected(p.isDeleteObsoleteFiles());
     }
   }

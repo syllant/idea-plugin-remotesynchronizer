@@ -1,24 +1,28 @@
 package org.sylfra.idea.plugins.remotesynchronizer.utils;
 
 import com.intellij.openapi.module.Module;
+import com.intellij.openapi.module.ModuleManager;
+import com.intellij.openapi.roots.CompilerModuleExtension;
 import com.intellij.openapi.roots.ProjectFileIndex;
 import com.intellij.openapi.roots.ProjectRootManager;
-import com.intellij.openapi.roots.CompilerModuleExtension;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiJavaFile;
 import com.intellij.psi.PsiManager;
 import org.apache.tools.ant.types.selectors.SelectorUtils;
+import org.sylfra.idea.plugins.remotesynchronizer.RemoteSynchronizerPlugin;
 import org.sylfra.idea.plugins.remotesynchronizer.model.Config;
 import org.sylfra.idea.plugins.remotesynchronizer.model.ConfigListener;
 import org.sylfra.idea.plugins.remotesynchronizer.model.SynchroMapping;
 import org.sylfra.idea.plugins.remotesynchronizer.model.TargetMappings;
-import org.sylfra.idea.plugins.remotesynchronizer.RemoteSynchronizerPlugin;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Provides support for paths management, using current project and plugin
@@ -76,8 +80,18 @@ public class ConfigPathsManager
 
   public boolean isOutputPath(String path)
   {
-    return isRelativePath(
-      ProjectRootManager.getInstance(plugin.getProject()).getContentRoots(), path);
+    Module[] modules = ModuleManager.getInstance(plugin.getProject()).getModules();
+    for (Module module : modules)
+    {
+      CompilerModuleExtension cme = CompilerModuleExtension.getInstance(module);
+      if ((isRelativePath(cme.getCompilerOutputPath(), path))
+        || (isRelativePath(cme.getCompilerOutputPathForTests(), path)))
+      {
+        return true;
+      }
+    }
+
+    return false;
   }
 
   public boolean isJavaSource(VirtualFile f)
@@ -142,22 +156,26 @@ public class ConfigPathsManager
       .getFileIndex();
     Module module = fileIndex.getModuleForFile(f);
 
-    String result = null;
+    VirtualFile vFile;
     if (fileIndex.isInTestSourceContent(f))
     {
-      result = CompilerModuleExtension.getInstance(module).getCompilerOutputForTestsPointer()
-        .getPresentableUrl();
+      vFile = CompilerModuleExtension.getInstance(module).getCompilerOutputPathForTests();
     }
     else if (fileIndex.isInSourceContent(f))
     {
-      result = CompilerModuleExtension.getInstance(module).getCompilerOutputPointer()
-        .getPresentableUrl();
+      vFile = CompilerModuleExtension.getInstance(module).getCompilerOutputPath();
+    }
+    else
+    {
+      vFile = null;
     }
 
-    if (result != null)
-      result = PathsUtils.toModelPath(result);
+    if (vFile == null)
+    {
+      return null;
+    }
 
-    return result;
+    return PathsUtils.toModelPath(vFile.getPresentableUrl());
   }
 
   /**
