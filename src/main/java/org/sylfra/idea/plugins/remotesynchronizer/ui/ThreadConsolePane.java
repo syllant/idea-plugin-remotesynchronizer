@@ -1,12 +1,11 @@
 package org.sylfra.idea.plugins.remotesynchronizer.ui;
 
+import com.intellij.openapi.wm.ToolWindowManager;
+import org.sylfra.idea.plugins.remotesynchronizer.RemoteSynchronizerPlugin;
 import org.sylfra.idea.plugins.remotesynchronizer.synchronizing.SynchronizerThread;
 import org.sylfra.idea.plugins.remotesynchronizer.utils.LabelsFactory;
-import org.sylfra.idea.plugins.remotesynchronizer.RemoteSynchronizerPlugin;
 
 import javax.swing.*;
-
-import com.intellij.openapi.wm.ToolWindowManager;
 
 /**
  * Thread consoles container
@@ -136,9 +135,15 @@ public class ThreadConsolePane extends JTabbedPane
     remove(thread.getConsole());
   }
 
-  public void updateTitle(ThreadConsole console)
+  public void updateTitle(final ThreadConsole console)
   {
-    setTitleAt(indexOfComponent(console), findTitle(console));
+    SwingUtilities.invokeLater(new Runnable()
+    {
+      public void run()
+      {
+        setTitleAt(indexOfComponent(console), findTitle(console));
+      }
+    });
   }
 
   private String findTitle(ThreadConsole console)

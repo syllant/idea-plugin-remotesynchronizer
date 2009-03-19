@@ -2,6 +2,7 @@ package org.sylfra.idea.plugins.remotesynchronizer.ui.tables;
 
 import org.sylfra.idea.plugins.remotesynchronizer.utils.ConfigPathsManager;
 import org.sylfra.idea.plugins.remotesynchronizer.utils.LabelsFactory;
+import org.sylfra.idea.plugins.remotesynchronizer.utils.PathsUtils;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
@@ -166,7 +167,18 @@ public class AbstractPathTable extends JTable
       DefaultTableCellRenderer result = (DefaultTableCellRenderer)
         super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
-      result.setText(pathManager.toPresentablePath(result.getText()));
+      String path = PathsUtils.toModelPath(result.getText());
+      if (pathManager.getPlugin().getConfig().getGeneralOptions().isStoreRelativePaths())
+      {
+        path = PathsUtils.getRelativePath(pathManager.getPlugin().getProject(), path);
+      }
+      else
+      {
+        path = pathManager.expandPath(path, false);
+      }
+      path = pathManager.toPresentablePath(path);
+
+      result.setText(path);
       setToolTipText(pathManager.expandPath(result.getText(), false));
 
       return result;
@@ -196,8 +208,19 @@ public class AbstractPathTable extends JTable
       boolean inProject = (pathManager.isRelativePath(path))
         || (pathManager.isOutputPath(path));
 
-      String presentablePath = pathManager.toPresentablePath(path);
+      String presentablePath;
+      if (pathManager.getPlugin().getConfig().getGeneralOptions().isStoreRelativePaths())
+      {
+        presentablePath = PathsUtils.getRelativePath(pathManager.getPlugin().getProject(), path);
+      }
+      else
+      {
+        presentablePath = pathManager.expandPath(path, false);
+      }
+      presentablePath = pathManager.toPresentablePath(presentablePath);
+
       result.setText(presentablePath);
+
       if (inProject)
       {
         result.setForeground(Color.black);

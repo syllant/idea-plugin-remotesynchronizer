@@ -1,5 +1,10 @@
 Change history
 
+*  1.7 (18 Mar. 2009)
+      o New: Compiled with Java 5 for MacOSX users
+      o Fix: display of relative paths in settings
+      o Fix: NPE for Java files when output test directory is not valid
+
 *  1.6.1 (2 Oct. 2008)
       o Fix: NPE for Java files when compilation output path were outside from project
       o Fix: tooltips show full paths

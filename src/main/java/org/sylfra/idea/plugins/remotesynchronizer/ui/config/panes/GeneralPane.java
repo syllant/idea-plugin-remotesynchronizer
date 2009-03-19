@@ -1,8 +1,12 @@
 package org.sylfra.idea.plugins.remotesynchronizer.ui.config.panes;
 
+import com.intellij.openapi.project.Project;
 import org.sylfra.idea.plugins.remotesynchronizer.model.Config;
+import org.sylfra.idea.plugins.remotesynchronizer.model.SynchroMapping;
+import org.sylfra.idea.plugins.remotesynchronizer.model.TargetMappings;
 import org.sylfra.idea.plugins.remotesynchronizer.utils.ConfigPathsManager;
 import org.sylfra.idea.plugins.remotesynchronizer.utils.LabelsFactory;
+import org.sylfra.idea.plugins.remotesynchronizer.utils.PathsUtils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,14 +16,18 @@ import java.awt.*;
  */
 public final class GeneralPane extends JPanel implements IConfigPane
 {
+  private final Project project;
+  private final ConfigPathsManager pathManager;
   private JCheckBox ckStoreRelativePaths;
   private JCheckBox ckSaveBeforeCopy;
   private JCheckBox ckCreateMissingDirs;
   private JCheckBox ckSimulationMode;
   private JCheckBox ckAllowConcurrentRuns;
 
-  public GeneralPane()
+  public GeneralPane(Project project, ConfigPathsManager pathManager)
   {
+    this.project = project;
+    this.pathManager = pathManager;
   }
 
   public String getTitle()
@@ -52,6 +60,25 @@ public final class GeneralPane extends JPanel implements IConfigPane
   public void apply(Config config)
   {
     Config.GeneralOptions generalOptions = config.getGeneralOptions();
+
+    if (generalOptions.isStoreRelativePaths() != ckStoreRelativePaths.isSelected())
+    {
+      for (TargetMappings targetMappings : config.getTargetMappings())
+      {
+        for (SynchroMapping mapping : targetMappings.getSynchroMappings())
+        {
+          String path = ckStoreRelativePaths.isSelected()
+            ? PathsUtils.getRelativePath(project, mapping.getSrcPath())
+            : pathManager.expandPath(mapping.getSrcPath(), true);
+          mapping.setSrcPath(path);
+
+          path = ckStoreRelativePaths.isSelected()
+            ? PathsUtils.getRelativePath(project, mapping.getDestPath())
+            : pathManager.expandPath(mapping.getDestPath(), true);
+          mapping.setDestPath(path);
+        }
+      }
+    }
 
     generalOptions.setStoreRelativePaths(ckStoreRelativePaths.isSelected());
     generalOptions.setSaveBeforeCopy(ckSaveBeforeCopy.isSelected());

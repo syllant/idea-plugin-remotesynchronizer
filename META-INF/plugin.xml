@@ -5,12 +5,13 @@
     tools (command line, file explorer, ...), RemoteSynchronizer launches copies from Idea, using
     paths customized for project. It is also able to delete obsolete files on remote locations.</description>
   <version>@PLUGIN_VERSION@</version>
-  <vendor email="sylfradev@yahoo.fr">Sylvain FRANCOIS</vendor>
+  <vendor email="syllant@gmail.com">Sylvain FRANCOIS</vendor>
   <idea-version since-build="8000"/>
   <change-notes><![CDATA[<html>
       <ul>
-        <li>Fix: NPE for Java files when compilation output path were outside from project</li>
-        <li>Fix: tooltips show full paths</li>
+        <li>New: Compiled with Java 5 for Mac OSX users</li>
+        <li>Fix: display of relative paths in settings</li>
+        <li>Fix: NPE for Java files when output test directory is not valid</li>
       </ul>
     </html>]]></change-notes>
 

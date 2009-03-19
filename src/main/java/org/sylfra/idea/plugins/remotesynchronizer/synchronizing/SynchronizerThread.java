@@ -336,7 +336,7 @@ public class SynchronizerThread
   {
     for (VirtualFile file : selectedFiles)
     {
-      if (plugin.getPathManager().isRelativePath(file, path))
+      if (plugin.getPathManager().isRelativePath(file.getPath(), path))
       {
         return true;
       }

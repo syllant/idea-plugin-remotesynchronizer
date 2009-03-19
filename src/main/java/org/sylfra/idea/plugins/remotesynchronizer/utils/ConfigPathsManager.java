@@ -61,7 +61,7 @@ public class ConfigPathsManager
   {
     for (VirtualFile root : roots)
     {
-      if (isRelativePath(root, path))
+      if (isRelativePath(root.getPath(), path))
       {
         return true;
       }
@@ -70,12 +70,12 @@ public class ConfigPathsManager
     return false;
   }
 
-  public boolean isRelativePath(VirtualFile root, String path)
+  public boolean isRelativePath(String root, String path)
   {
     path = expandPath(path, true);
-    return ((path.toLowerCase().indexOf(root.getPath().toLowerCase()) == 0)
-      && ((path.length() == root.getPath().length()
-      || (path.charAt(root.getPath().length()) == '/'))));
+    return ((path.toLowerCase().indexOf(root.toLowerCase()) == 0)
+      && ((path.length() == root.length()
+      || (path.charAt(root.length()) == '/'))));
   }
 
   public boolean isOutputPath(String path)
@@ -84,8 +84,10 @@ public class ConfigPathsManager
     for (Module module : modules)
     {
       CompilerModuleExtension cme = CompilerModuleExtension.getInstance(module);
-      if ((isRelativePath(cme.getCompilerOutputPath(), path))
-        || (isRelativePath(cme.getCompilerOutputPathForTests(), path)))
+
+      // Use getCompilerOutputXXXPointer since getCompilerOutputXXXPath return NULL when directory does not exist
+      if ((isRelativePath(PathsUtils.toModelPath(cme.getCompilerOutputPointer().getPresentableUrl()), path))
+        || (isRelativePath(PathsUtils.toModelPath(cme.getCompilerOutputForTestsPointer().getPresentableUrl()), path)))
       {
         return true;
       }
