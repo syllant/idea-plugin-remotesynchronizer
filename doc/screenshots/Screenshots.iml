@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="4" relativePaths="false" type="JAVA_MODULE">
+  <component name="ModuleRootManager">
+    <jdk name="" />
+    <projectPath>
+      <root type="composite">
+        <root type="simple" url="file://C:/project" />
+      </root>
+    </projectPath>
+    <sourcePath>
+      <root type="composite" />
+    </sourcePath>
+    <classPath>
+      <root type="composite">
+        <root type="output" />
+      </root>
+    </classPath>
+    <excludePath>
+      <root type="composite">
+        <root type="excludedOutput" />
+      </root>
+    </excludePath>
+    <javadocPath>
+      <root type="composite" />
+    </javadocPath>
+    <assert_keyword enabled="no" />
+    <exclude_output enabled="yes" />
+  </component>
+  <component name="NewModuleRootManager">
+    <content url="file://C:/project" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntryProperties />
+  </component>
+  <component name="libraryTable" />
+</module>
+

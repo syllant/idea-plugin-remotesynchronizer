@@ -1,0 +1,68 @@
+Change history
+
+*  1.7 (18 Mar. 2009)
+      o New: Compiled with Java 5 for MacOSX users
+      o Fix: display of relative paths in settings
+      o Fix: NPE for Java files when output test directory is not valid
+
+*  1.6.1 (2 Oct. 2008)
+      o Fix: NPE for Java files when compilation output path were outside from project
+      o Fix: tooltips show full paths
+
+*  1.6 (25 Sept. 2008)
+      o  Upgraded with Idea 8.0 new API
+      o  New: option to store relative paths instead of absolute paths
+      o  New: tables usability improved (double-click on row opens dialog, tooltip with full path)
+      o  New: excluded **/.svn by default
+      o  New: import/export format has changed, it used new Idea serialization API
+      o  Fix: removed Hide button on tool window
+
+
+*  1.5 (28 Sept. 2007)
+      o  Compiled with Java 6
+      o  Fix: replaced some deprecated usages
+
+*  1.4.1 (24 Jan. 2006)
+      o  Fix: bug when checking that source path was not child of destination path
+
+*  1.4 (27 Apr. 2005)
+      o  Rebuilt for EAP 3311 because of JDom upgrade
+
+*  1.3 (15 Dec. 2004)
+      o New: Added a Rerun button
+      o New: Added an option to popup console before synchronizations
+      o New: Added an option to clear console before synchronizations
+      o New: Added an option to deactivate concurrent synchronizations
+      o New: Added an option to hide identical files inside logs
+
+*  1.2 (26 Aug. 2004)
+      o Fix: Files were not synchronized when case used in mappings didn't match with system case
+      o New: Added Import/Export settings function
+
+* 1.1.2 (6 Aug. 2004)
+      o Fix: plugin.xml updated to make the plugin available for both 4.0x/4.5x
+
+* 1.1.1 (27 Feb. 2004)
+      o Fix: in project view, Synchronize this synchronized whole selected module instead of selected file(s)
+
+* 1.1 (26 Feb. 2004)
+      o Fix: updated to work with Idea 4.0
+      o New: action Synchronize this works on module elements inside Project view
+
+* 1.0.4 (8 Dec. 2003)
+      o Fix: updated to work with new module-based configuration (tested with b977)
+
+* 1.0.3 (15 Jul. 2003)
+      o Fix: bug in computing destination path when source path contains an included path which is not in its file tree (eg. src=/test/webinf/test.xml, included=/test/web, src path is not concerned with included path definition !)
+      o Fix: trailing \ or / are preserved after path definition
+
+* 1.0.2 (14 Jul. 2003)
+      o Fix: works with Ariadna (3.0.x) as well as Aurora
+
+* 1.0.1 (11 Jul. 2003) / Aurora
+      o Fix: crash when classes were copied, introduced with new OpenAPI
+
+* 1.0 (14 Apr. 2003) / Aurora 823- [Changes from RemoteCopier 1.1.1]
+      o New: synchronization, i.e. obsolete files may be deleted
+      o New: excluded paths must be specified as ANT patterns
+      o New: simulation mode

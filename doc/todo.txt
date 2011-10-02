@@ -1,0 +1,3 @@
+* tooltip : presentablepath
+* continuous copy
+* show a floating msg instead of window (new option)
