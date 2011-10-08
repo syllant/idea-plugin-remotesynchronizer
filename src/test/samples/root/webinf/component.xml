@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<RemoteSynchronizerSettings>
+  <targets>
+    <target active="true" name="Défaut">
+      <synchro-mappings>
+        <path src="X:/_syfranco/dev/rs/test/samples/root/web" dest="D:/_syfranco/dev/rsr/test/samples/remote/webapp" delete-obsolete-files="true"/>
+        <path src="D:/_syfranco/dev/rs/test/samples/root/dir1" dest="D:/_syfranco/dev/rs/test/samples/remote/dir1bis" delete-obsolete-files="true"/>
+        <path src="s:/projects/rcopier/remotesynchronizer/test/samples/root/readme.txt" dest="S:/projects/rcopier/remotesynchronizer/test/samples/remote/r.txt" delete-obsolete-files="true"/>
+        <path src="D:/_syfranco/dev/rs/test/samples/root/sub-module2/classes/main" dest="D:/_syfranco/dev/rs/test/samples/remote/classes/main-sub2" delete-obsolete-files="true"/>
+        <path src="D:/_syfranco/dev/rs/test/samples/root" dest="D:/_syfranco/dev/rs/test/samples/remote/misc" delete-obsolete-files="true"/>
+        <path src="D:/_syfranco/dev/rs/test/samples/root/classes/junit" dest="D:/_syfranco/dev/rs/test/samples/remote/classes/junit" delete-obsolete-files="true"/>
+      </synchro-mappings>
+      <excluded-copy-paths>
+        <path src="**/.dependency-info/*"/>
+        <path src="**/*.javas"/>
+        <path src="**/CVS/*"/>
+      </excluded-copy-paths>
+      <excluded-delete-paths/>
+    </target>
+  </targets>
+  <general-options save-before-copy="false" create-missing-dirs="true" simulation-mode="false"/>
+  <log-options showExcludedPaths="false" showSrcPaths="false" fontFamily="Monospaced" fontSize="12"/>
+</RemoteSynchronizerSettings>
+

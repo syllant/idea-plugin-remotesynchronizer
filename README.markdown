@@ -22,7 +22,7 @@ Settings are defined from Project settings panel.
 Import/Export buttons allow to backup plugin configuration using XML files. Paths may be stored as absolute or relative depending on chosen option.
 
 ## Mappings configuration
-![Mapping configuration](https://github.com/syllant/idea-plugin-remotesynchronizer/raw/master/doc/screenshots/mapping-settings.png)
+![Mapping configuration](https://github.com/syllant/idea-plugin-remotesynchronizer/raw/master/src/main/doc/screenshots/mapping-settings.png)
 
 Paths mappings are gathered within targets.
 These targets can be activated/deactived at any time. For example, you could define a target for your development server and another for a test server.
@@ -48,7 +48,7 @@ You can prevent some files to be copied using ANT pattern. For example, to preve
 You can also prevent some files to be deleted on remote location. You will also use ANT patterns.
 
 ## General settings
-![General settings](https://github.com/syllant/idea-plugin-remotesynchronizer/raw/master/doc/screenshots/general-settings.png)
+![General settings](https://github.com/syllant/idea-plugin-remotesynchronizer/raw/master/src/main/doc/screenshots/general-settings.png)
 
 * *Simulation mode*: you should start by activating this option if you are not sure about your configuration. Synchronizations will be logged (in italic) so you can check what will occur, but no copy or deletion will be launched.
 * *Store relative paths*: if checked, all paths will be stored as relative from directory storing IDEA project file (`.ipr`)
@@ -57,7 +57,7 @@ You can also prevent some files to be deleted on remote location. You will also 
 * *Allow concurrent synchronizations*: if checked, several synchronizations may be launched in parallel
 
 ## Logs settings
-![General settings](https://github.com/syllant/idea-plugin-remotesynchronizer/raw/master/doc/screenshots/log-settings.png)
+![General settings](https://github.com/syllant/idea-plugin-remotesynchronizer/raw/master/src/main/doc/screenshots/log-settings.png)
 
 * *Clear before synchronization*: if checked, console is cleared before each synchronization
 * *Shows log window when synchronization starts*: if checked, console is shown when synchronization starts. This is useful when you want check all operation results.
