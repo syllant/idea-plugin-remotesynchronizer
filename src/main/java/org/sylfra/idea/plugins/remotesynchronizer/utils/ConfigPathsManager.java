@@ -84,7 +84,11 @@ public class ConfigPathsManager
     for (Module module : modules)
     {
       CompilerModuleExtension cme = CompilerModuleExtension.getInstance(module);
-
+      if (cme == null)
+      {
+        return false;
+      }
+      
       // Use getCompilerOutputXXXPointer since getCompilerOutputXXXPath return NULL when directory does not exist
       if ((isRelativePath(PathsUtils.toModelPath(cme.getCompilerOutputPointer().getPresentableUrl()), path))
         || (isRelativePath(PathsUtils.toModelPath(cme.getCompilerOutputForTestsPointer().getPresentableUrl()), path)))

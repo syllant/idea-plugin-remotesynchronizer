@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DependencyValidationManager">
-    <option name="SKIP_IMPORT_STATEMENTS" value="false" />
+  <component name="EntryPointsManager">
+    <entry_points version="2.0" />
   </component>
   <component name="IdProvider" IDEtalkID="26A52EA3334FE29A17EEDF54873B6106" />
   <component name="JavadocGenerationManager">
