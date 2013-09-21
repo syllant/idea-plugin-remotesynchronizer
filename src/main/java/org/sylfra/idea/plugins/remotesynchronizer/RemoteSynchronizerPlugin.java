@@ -37,11 +37,6 @@ public class RemoteSynchronizerPlugin
   implements ProjectComponent, Configurable, JDOMExternalizable
 {
   public static final String PLUGIN_NAME = "RemoteSynchronizer";
-  // Will be substituted by ANT
-  private static final String PLUGIN_VERSION_TO_REPLACE = "@PLUGIN_VERSION@";
-  private static final String PLUGIN_DEFAULT_VERSION = "dev";
-  public static final String PLUGIN_VERSION = PLUGIN_VERSION_TO_REPLACE.startsWith("@")
-    ? PLUGIN_DEFAULT_VERSION : PLUGIN_VERSION_TO_REPLACE;
 
   public static final String WINDOW_ACTIONS_NAME = PLUGIN_NAME + "Window";
   public static final String ACTION_CLEAR_CONSOLE_NAME = "ConsoleClearAction";

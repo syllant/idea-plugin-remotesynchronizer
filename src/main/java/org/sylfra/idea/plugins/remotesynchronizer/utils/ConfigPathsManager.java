@@ -90,8 +90,10 @@ public class ConfigPathsManager
       }
       
       // Use getCompilerOutputXXXPointer since getCompilerOutputXXXPath return NULL when directory does not exist
-      if ((isRelativePath(PathsUtils.toModelPath(cme.getCompilerOutputPointer().getPresentableUrl()), path))
-        || (isRelativePath(PathsUtils.toModelPath(cme.getCompilerOutputForTestsPointer().getPresentableUrl()), path)))
+      if (((cme.getCompilerOutputPointer() != null)
+        && isRelativePath(PathsUtils.toModelPath(cme.getCompilerOutputPointer().getPresentableUrl()), path))
+        || ((cme.getCompilerOutputForTestsPointer() != null)
+        && isRelativePath(PathsUtils.toModelPath(cme.getCompilerOutputForTestsPointer().getPresentableUrl()), path)))
       {
         return true;
       }

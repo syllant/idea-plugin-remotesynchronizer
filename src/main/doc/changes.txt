@@ -1,5 +1,8 @@
 Change history
 
+*  1.7.2 (05 Jan. 2012)
+      o Fix: Bug with some modules without output path (again)
+
 *  1.7.1 (25 Dec. 2011)
       o Fix: Bug with some modules without output path
 

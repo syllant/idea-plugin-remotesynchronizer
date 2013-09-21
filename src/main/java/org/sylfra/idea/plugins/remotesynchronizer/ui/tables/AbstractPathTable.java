@@ -205,8 +205,7 @@ public class AbstractPathTable extends JTable
         super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
       String path = result.getText();
-      boolean inProject = (pathManager.isRelativePath(path))
-        || (pathManager.isOutputPath(path));
+      boolean inProject = (pathManager.isRelativePath(path)) || (pathManager.isOutputPath(path));
 
       String presentablePath;
       if (pathManager.getPlugin().getConfig().getGeneralOptions().isStoreRelativePaths())

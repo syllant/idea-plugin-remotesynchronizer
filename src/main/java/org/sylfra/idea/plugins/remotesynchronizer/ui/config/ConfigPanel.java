@@ -1,5 +1,7 @@
 package org.sylfra.idea.plugins.remotesynchronizer.ui.config;
 
+import com.intellij.ide.plugins.PluginManager;
+import com.intellij.openapi.extensions.PluginId;
 import com.intellij.openapi.project.Project;
 import org.sylfra.idea.plugins.remotesynchronizer.RemoteSynchronizerPlugin;
 import org.sylfra.idea.plugins.remotesynchronizer.model.Config;
@@ -93,7 +95,9 @@ public class ConfigPanel extends JPanel
 
     JPanel panel = new JPanel(new BorderLayout());
     panel.add(pnImportExport, BorderLayout.CENTER);
-    panel.add(new JLabel("version " + RemoteSynchronizerPlugin.PLUGIN_VERSION), BorderLayout.EAST);
+    panel.add(new JLabel("version " +
+      PluginManager.getPlugin(PluginId.getId(RemoteSynchronizerPlugin.PLUGIN_NAME)).getVersion()),
+      BorderLayout.EAST);
     return panel;
   }
 }
