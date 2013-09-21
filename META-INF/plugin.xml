@@ -1,15 +1,16 @@
-<idea-plugin url="http://idea-remotesynchronizer.googlecode.com/">
+<idea-plugin url="https://github.com/syllant/idea-plugin-remotesynchronizer">
   <name>RemoteSynchronizer</name>
   <description>RemoteSynchronizer plugin allows you to synchronize files with remote locations.
     Instead of manually copying files from your project to their runtime location using external
     tools (command line, file explorer, ...), RemoteSynchronizer launches copies from Idea, using
     paths customized for project. It is also able to delete obsolete files on remote locations.</description>
-  <version>1.7.2</version>
-  <vendor email="syllant@gmail.com">Sylvain FRANCOIS</vendor>
+  <version>1.7.3</version>
+  <vendor email="syllant@gmail.com" url="https://github.com/syllant">Sylvain FRANCOIS</vendor>
   <idea-version since-build="8000"/>
+  <depends>com.intellij.modules.lang</depends>
   <change-notes><![CDATA[<html>
       <ul>
-        <li>Fix: Bug with some modules without output path</li>
+        <li>Upgraded for Idea 13</li>
       </ul>
     </html>]]></change-notes>
 

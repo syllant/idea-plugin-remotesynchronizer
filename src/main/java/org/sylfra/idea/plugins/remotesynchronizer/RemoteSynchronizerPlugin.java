@@ -11,7 +11,6 @@ import com.intellij.openapi.util.WriteExternalException;
 import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowAnchor;
 import com.intellij.openapi.wm.ToolWindowManager;
-import com.intellij.peer.PeerFactory;
 import com.intellij.ui.content.Content;
 import com.intellij.ui.content.ContentFactory;
 import org.jdom.Element;
@@ -177,7 +176,7 @@ public class RemoteSynchronizerPlugin
   {
     ToolWindow toolwindow = ToolWindowManager.getInstance(project)
       .registerToolWindow(PLUGIN_NAME, true, ToolWindowAnchor.BOTTOM);
-    ContentFactory contentFactory = PeerFactory.getInstance().getContentFactory();
+    ContentFactory contentFactory = ContentFactory.SERVICE.getInstance();
     Content content = contentFactory.createContent(new ToolPanel(consolePane, getConfig()),
       PLUGIN_NAME, true);
     toolwindow.getContentManager().addContent(content);
