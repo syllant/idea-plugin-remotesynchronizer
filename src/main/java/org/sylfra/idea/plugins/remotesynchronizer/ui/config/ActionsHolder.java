@@ -3,9 +3,9 @@ package org.sylfra.idea.plugins.remotesynchronizer.ui.config;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
+import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.openapi.project.Project;
 import org.sylfra.idea.plugins.remotesynchronizer.RemoteSynchronizerPlugin;
 import org.sylfra.idea.plugins.remotesynchronizer.ui.dialogs.AbstractPathDialog;
 import org.sylfra.idea.plugins.remotesynchronizer.ui.dialogs.PathDialogFactory;
@@ -338,7 +338,7 @@ public class ActionsHolder
       }
 
       VirtualFile[] virtualFiles =
-        FileChooser.chooseFiles(project, fcDescriptor, selectedFile);
+        FileChooser.chooseFiles(fcDescriptor, project, selectedFile);
       if (virtualFiles.length == 0)
       {
         return;

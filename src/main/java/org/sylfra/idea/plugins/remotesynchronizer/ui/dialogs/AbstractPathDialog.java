@@ -80,8 +80,7 @@ public abstract class AbstractPathDialog extends DialogWrapper implements Dispos
     return result;
   }
 
-  protected JButton createBrowseButton(final JTextField textField,
-          final boolean useAntPattern)
+  protected JButton createBrowseButton(final JTextField textField, final boolean useAntPattern)
   {
     JButton button = new JButton("...");
     button.setPreferredSize(new Dimension(20,
@@ -101,8 +100,8 @@ public abstract class AbstractPathDialog extends DialogWrapper implements Dispos
           toSelect = pathManager.getProjectDefaultRoot();
         }
 
-        VirtualFile[] virtualFiles =
-                FileChooser.chooseFiles((Component) e.getSource(), fcDescriptor, toSelect);
+        VirtualFile[] virtualFiles = FileChooser.chooseFiles(fcDescriptor, (Component) e.getSource(),
+          pathManager.getPlugin().getProject(), toSelect);
 
         if (virtualFiles.length > 0)
         {

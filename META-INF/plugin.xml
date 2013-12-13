@@ -4,9 +4,9 @@
     Instead of manually copying files from your project to their runtime location using external
     tools (command line, file explorer, ...), RemoteSynchronizer launches copies from Idea, using
     paths customized for project. It is also able to delete obsolete files on remote locations.</description>
-  <version>1.7.3</version>
+  <version>1.8</version>
   <vendor email="syllant@gmail.com" url="https://github.com/syllant">Sylvain FRANCOIS</vendor>
-  <idea-version since-build="8000"/>
+  <idea-version since-build="133.193"/>
   <depends>com.intellij.modules.lang</depends>
   <change-notes><![CDATA[<html>
       <ul>
