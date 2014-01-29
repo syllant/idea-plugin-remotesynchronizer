@@ -52,7 +52,8 @@ You can also prevent some files to be deleted on remote location. You will also 
 
 * *Simulation mode*: you should start by activating this option if you are not sure about your configuration. Synchronizations will be logged (in italic) so you can check what will occur, but no copy or deletion will be launched.
 * *Store relative paths*: if checked, all paths will be stored as relative from directory storing IDEA project file (`.ipr`)
-* *Save before synchronize*: if checked, project will be saved before synchronization. Some users have requested an option to launch synchronizations after each _save_ action. Check this option instead ! And forget the standard _Save_ action, just synchronize !
+* *Synchronize on save*: if checked, project will be synchronized on save (could be dangerous if you saved incomplete files!).
+* *Save before synchronize*: if checked, project will be saved before synchronization.
 * *Create missing directories*: if checked, destination directories will be created as needed
 * *Allow concurrent synchronizations*: if checked, several synchronizations may be launched in parallel
 
