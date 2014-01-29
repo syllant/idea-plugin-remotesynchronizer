@@ -1,8 +1,6 @@
 package org.sylfra.idea.plugins.remotesynchronizer.model;
 
-import org.sylfra.idea.plugins.remotesynchronizer.RemoteSynchronizerPlugin;
 import org.sylfra.idea.plugins.remotesynchronizer.utils.LabelsFactory;
-import org.sylfra.idea.plugins.remotesynchronizer.utils.PathsUtils;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -110,6 +108,7 @@ public class Config implements Serializable
   {
     private boolean storeRelativePaths;
     private boolean saveBeforeCopy;
+    private boolean copyOnSave;
     private boolean createMissingDirs;
     private boolean simulationMode;
     private boolean allowConcurrentRuns;
@@ -139,6 +138,16 @@ public class Config implements Serializable
     public void setSaveBeforeCopy(boolean saveBeforeCopy)
     {
       this.saveBeforeCopy = saveBeforeCopy;
+    }
+
+    public boolean isCopyOnSave()
+    {
+      return copyOnSave;
+    }
+
+    public void setCopyOnSave(boolean copyOnSave)
+    {
+      this.copyOnSave = copyOnSave;
     }
 
     public boolean isCreateMissingDirs()

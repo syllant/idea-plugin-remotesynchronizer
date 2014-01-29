@@ -10,6 +10,8 @@ import org.sylfra.idea.plugins.remotesynchronizer.utils.PathsUtils;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * @author <a href="mailto=sylfradev@yahoo.fr">Sylvain FRANCOIS</a>
@@ -20,6 +22,7 @@ public final class GeneralPane extends JPanel implements IConfigPane
   private final ConfigPathsManager pathManager;
   private JCheckBox ckStoreRelativePaths;
   private JCheckBox ckSaveBeforeCopy;
+  private JCheckBox ckCopyOnSave;
   private JCheckBox ckCreateMissingDirs;
   private JCheckBox ckSimulationMode;
   private JCheckBox ckAllowConcurrentRuns;
@@ -41,6 +44,7 @@ public final class GeneralPane extends JPanel implements IConfigPane
 
     return !((generalOptions.isStoreRelativePaths() == ckStoreRelativePaths.isSelected())
       && (generalOptions.isSaveBeforeCopy() == ckSaveBeforeCopy.isSelected())
+      && (generalOptions.isCopyOnSave() == ckCopyOnSave.isSelected())
       && (generalOptions.isCreateMissingDirs() == ckCreateMissingDirs.isSelected())
       && (generalOptions.isAllowConcurrentRuns() == ckAllowConcurrentRuns.isSelected())
       && (generalOptions.isSimulationMode() == ckSimulationMode.isSelected()));
@@ -48,13 +52,23 @@ public final class GeneralPane extends JPanel implements IConfigPane
 
   public void reset(Config config)
   {
+    // Prevent both options to be true
+    if (config.getGeneralOptions().isSaveBeforeCopy())
+    {
+      config.getGeneralOptions().setCopyOnSave(false);
+    }
+
     Config.GeneralOptions generalOptions = config.getGeneralOptions();
 
     ckStoreRelativePaths.setSelected(generalOptions.isStoreRelativePaths());
     ckSaveBeforeCopy.setSelected(generalOptions.isSaveBeforeCopy());
+    ckCopyOnSave.setSelected(generalOptions.isCopyOnSave());
     ckCreateMissingDirs.setSelected(generalOptions.isCreateMissingDirs());
     ckSimulationMode.setSelected(generalOptions.isSimulationMode());
     ckAllowConcurrentRuns.setSelected(generalOptions.isAllowConcurrentRuns());
+
+    ckCopyOnSave.setEnabled(!ckSaveBeforeCopy.isSelected());
+    ckSaveBeforeCopy.setEnabled(!ckCopyOnSave.isSelected());
   }
 
   public void apply(Config config)
@@ -82,6 +96,7 @@ public final class GeneralPane extends JPanel implements IConfigPane
 
     generalOptions.setStoreRelativePaths(ckStoreRelativePaths.isSelected());
     generalOptions.setSaveBeforeCopy(ckSaveBeforeCopy.isSelected());
+    generalOptions.setCopyOnSave(ckCopyOnSave.isSelected());
     generalOptions.setCreateMissingDirs(ckCreateMissingDirs.isSelected());
     generalOptions.setSimulationMode(ckSimulationMode.isSelected());
     generalOptions.setAllowConcurrentRuns(ckAllowConcurrentRuns.isSelected());
@@ -91,6 +106,7 @@ public final class GeneralPane extends JPanel implements IConfigPane
   {
     ckStoreRelativePaths = new JCheckBox(LabelsFactory.get(LabelsFactory.LB_STORE_RELATIVE_PATHS));
     ckSaveBeforeCopy = new JCheckBox(LabelsFactory.get(LabelsFactory.LB_SAVE_BEFORE_COPY));
+    ckCopyOnSave = new JCheckBox(LabelsFactory.get(LabelsFactory.LB_COPY_ON_SAVE));
     ckCreateMissingDirs = new JCheckBox(LabelsFactory.get(LabelsFactory.LB_CREATE_MISSING_DIRS));
     ckSimulationMode = new JCheckBox(LabelsFactory.get(LabelsFactory.LB_SIMULATION_MODE));
     ckAllowConcurrentRuns = new JCheckBox(LabelsFactory.get(LabelsFactory.LB_ALLOW_CONCURRENT_RUNS));
@@ -109,9 +125,13 @@ public final class GeneralPane extends JPanel implements IConfigPane
     c.gridy++;
     add(ckStoreRelativePaths, c);
 
-    // Create missing dirs
+    // Save before synchronize
     c.gridy++;
     add(ckSaveBeforeCopy, c);
+
+    // Synchronize on save
+    c.gridy++;
+    add(ckCopyOnSave, c);
 
     // Create missing dirs
     c.gridy++;
@@ -121,5 +141,26 @@ public final class GeneralPane extends JPanel implements IConfigPane
     c.gridy++;
     c.weighty = 1.0;
     add(ckAllowConcurrentRuns, c);
+
+    handleSaveCopyOptionsConflict();
+  }
+
+  private void handleSaveCopyOptionsConflict()
+  {
+    ckCopyOnSave.addActionListener(new ActionListener()
+    {
+      public void actionPerformed(ActionEvent e)
+      {
+        ckSaveBeforeCopy.setEnabled(!ckCopyOnSave.isSelected());
+      }
+    });
+
+    ckSaveBeforeCopy.addActionListener(new ActionListener()
+    {
+      public void actionPerformed(ActionEvent e)
+      {
+        ckCopyOnSave.setEnabled(!ckSaveBeforeCopy.isSelected());
+      }
+    });
   }
 }

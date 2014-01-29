@@ -6,8 +6,8 @@ import org.sylfra.idea.plugins.remotesynchronizer.model.ConfigListener;
 import org.sylfra.idea.plugins.remotesynchronizer.model.SyncronizingStatsInfo;
 import org.sylfra.idea.plugins.remotesynchronizer.synchronizing.SynchronizerThread;
 import org.sylfra.idea.plugins.remotesynchronizer.synchronizing.SynchronizerThreadListener;
-import org.sylfra.idea.plugins.remotesynchronizer.utils.LabelsFactory;
 import org.sylfra.idea.plugins.remotesynchronizer.utils.ConfigPathsManager;
+import org.sylfra.idea.plugins.remotesynchronizer.utils.LabelsFactory;
 
 import javax.swing.*;
 import javax.swing.text.*;
@@ -331,34 +331,48 @@ public class ThreadConsole extends JScrollPane
     cleared = false;
   }
 
-  public void fileCopying(SynchronizerThread thread, String src, String dest,
-    int copyType)
+  public void fileCopying(SynchronizerThread thread, final String src, final String dest,
+    final int copyType)
   {
-    ConfigPathsManager pathsManager = thread.getPlugin().getPathManager();
+    final ConfigPathsManager pathsManager = thread.getPlugin().getPathManager();
 
-    src = pathsManager.toPresentablePath(src);
-    if (dest != null)
-      dest = pathsManager.toPresentablePath(dest);
-
-    String time = TIME_FORMATTER.format(new Date());
-    String copyTypeInfo = (copyType == -1) ? "" : COPY_INFOS[copyType];
-
-    if (dest == null)
+    SwingUtilities.invokeLater(new Runnable()
     {
-      if (config.getLogOptions().isLogExludedPaths())
-        append(time + " " + copyTypeInfo + " "
-          + "(" + LabelsFactory.get(LabelsFactory.MSG_FROM)
-          + " " + src + ")");
-    }
-    else if ((copyType != SynchronizerThread.TYPE_COPY_IDENTICAL)
-      || (config.getLogOptions().isLogIdenticalPaths()))
-    {
-      append(time + " " + copyTypeInfo + " " + dest);
-      if (config.getLogOptions().isLogSrcPaths())
-        append("[ " + LabelsFactory.get(LabelsFactory.MSG_FROM)
-          + " " + src + " ]");
-    }
-    cleared = false;
+      public void run()
+      {
+        String tmpSrc = pathsManager.toPresentablePath(src);
+        String tmpDest = dest;
+
+        if (tmpDest != null)
+        {
+          tmpDest = pathsManager.toPresentablePath(dest);
+        }
+
+        String time = TIME_FORMATTER.format(new Date());
+        String copyTypeInfo = (copyType == -1) ? "" : COPY_INFOS[copyType];
+
+        if (tmpDest == null)
+        {
+          if (config.getLogOptions().isLogExludedPaths())
+          {
+            append(time + " " + copyTypeInfo + " "
+              + "(" + LabelsFactory.get(LabelsFactory.MSG_FROM)
+              + " " + tmpSrc + ")");
+          }
+        }
+        else if ((copyType != SynchronizerThread.TYPE_COPY_IDENTICAL)
+          || (config.getLogOptions().isLogIdenticalPaths()))
+        {
+          append(time + " " + copyTypeInfo + " " + tmpDest);
+          if (config.getLogOptions().isLogSrcPaths())
+          {
+            append("[ " + LabelsFactory.get(LabelsFactory.MSG_FROM)
+              + " " + tmpSrc + " ]");
+          }
+        }
+        cleared = false;
+      }
+    });
   }
 
   public void fileDeleting(SynchronizerThread thread, String path)

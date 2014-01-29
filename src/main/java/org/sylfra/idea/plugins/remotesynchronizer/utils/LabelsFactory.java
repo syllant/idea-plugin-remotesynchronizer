@@ -49,6 +49,7 @@ public class LabelsFactory
   public static final String LB_NO_ACTIVE_TARGET = "LB_NO_ACTIVE_TARGET";
   public static final String LB_STORE_RELATIVE_PATHS = "LB_STORE_RELATIVE_PATHS";
   public static final String LB_SAVE_BEFORE_COPY = "LB_SAVE_BEFORE_COPY";
+  public static final String LB_COPY_ON_SAVE = "LB_COPY_ON_SAVE";
   public static final String LB_SHOW_EXCLUDED_PATHS = "LB_SHOW_EXCLUDED_PATHS";
   public static final String LB_SHOW_IDENTICAL_PATHS = "LB_SHOW_IDENTICAL_PATHS";
   public static final String LB_SIMULATION_MODE = "LB_SIMULATION_MODE";
