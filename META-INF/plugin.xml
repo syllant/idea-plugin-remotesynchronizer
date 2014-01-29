@@ -10,7 +10,7 @@
   <depends>com.intellij.modules.lang</depends>
   <change-notes><![CDATA[<html>
       <ul>
-        <li>New option to synchronize files on save</li>
+        <li>New option to synchronize files on save (in General config tab)</li>
       </ul>
     </html>]]></change-notes>
 
