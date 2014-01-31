@@ -1,6 +1,15 @@
 Change history
 
-*  1.7.3 (12 Sept. 2012)
+*  1.9.1 (31 Jan. 2014)
+      o Fixed compatibility with products other than IDEA
+
+*  1.9 (29 Jan. 2014)
+      o New option to synchronize files on save (in General config tab)
+
+*  1.8 (14 Dec. 2013)
+      o Upgraded for Idea 13
+
+*  1.7.3 (21 Sept. 2013)
       o Upgraded for Idea 13 (<a href="https://github.com/syllant/idea-plugin-remotesynchronizer/issues/4">Issue #4 (NoClassDefFoundError when using plugin in IDEA 13 (Cardea-IU-132-106))</a>)
 
 *  1.7.2 (05 Jan. 2012)
