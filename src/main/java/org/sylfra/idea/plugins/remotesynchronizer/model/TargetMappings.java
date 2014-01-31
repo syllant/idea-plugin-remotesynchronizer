@@ -7,6 +7,7 @@ public class TargetMappings implements Serializable
   public static final String[] DEFAULT_EXCLUDES_COPY = new String[]
   {
     "**/.dependency-info/*",
+    "**/.git/*",
     "**/.svn/*",
     "**/CVS/*",
     "**/*.java"
