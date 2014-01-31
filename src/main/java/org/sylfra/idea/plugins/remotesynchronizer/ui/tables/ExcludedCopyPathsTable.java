@@ -4,8 +4,6 @@ import org.sylfra.idea.plugins.remotesynchronizer.utils.LabelsFactory;
 
 /**
  * Contains one column for excluded copy paths
- *
- * @author <a href="mailto=sylfradev@yahoo.fr">Sylvain FRANCOIS</a>
  */
 public class ExcludedCopyPathsTable extends AbstractPathTable
 {

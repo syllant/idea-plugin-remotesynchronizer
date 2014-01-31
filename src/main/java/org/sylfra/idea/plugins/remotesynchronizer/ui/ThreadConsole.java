@@ -18,8 +18,6 @@ import java.util.Date;
 
 /**
  * Logs component. A thread console is linked to one thread synchronizer
- *
- * @author <a href="mailto=sylfradev@yahoo.fr">Sylvain FRANCOIS</a>
  */
 public class ThreadConsole extends JScrollPane
   implements ConfigListener, SynchronizerThreadListener

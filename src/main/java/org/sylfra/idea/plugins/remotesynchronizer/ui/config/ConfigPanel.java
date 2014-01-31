@@ -16,8 +16,6 @@ import java.awt.*;
 
 /**
  * Configuration panel
- *
- * @author <a href="mailto=sylfradev@yahoo.fr">Sylvain FRANCOIS</a>
  */
 public class ConfigPanel extends JPanel
 {

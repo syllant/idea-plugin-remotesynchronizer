@@ -8,8 +8,6 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * @author <a href="mailto:syllant@gmail.com">Sylvain FRANCOIS</a>
- * @version $Id$
  */
 public class NoJavaSupport implements IJavaSupport
 {

@@ -2,8 +2,6 @@ package org.sylfra.idea.plugins.remotesynchronizer.model;
 
 /**
  * Store copy results,  ie. numbers of success, failures, ...
- *
- * @author <a href="mailto=sylfradev@yahoo.fr">Sylvain FRANCOIS</a>
  */
 public class SyncronizingStatsInfo
 {

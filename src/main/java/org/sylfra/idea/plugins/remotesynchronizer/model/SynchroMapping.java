@@ -4,8 +4,6 @@ package org.sylfra.idea.plugins.remotesynchronizer.model;
 /**
  * Mapping between a source path and a destination path used to specify
  * included paths
- *
- * @author <a href="mailto=sylfradev@yahoo.fr">Sylvain FRANCOIS</a>
  */
 public class SynchroMapping implements Cloneable
 {

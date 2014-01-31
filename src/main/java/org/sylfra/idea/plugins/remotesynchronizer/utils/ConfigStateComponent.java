@@ -16,8 +16,7 @@ import com.intellij.util.messages.MessageBusConnection;
 import org.sylfra.idea.plugins.remotesynchronizer.model.Config;
 
 /**
- * @author <a href="mailto:sylvain.francois@kalistick.fr">Sylvain FRANCOIS</a>
- * @version $Id$
+ *
  */
 @State(
   name = "RemoteSynchronizer",

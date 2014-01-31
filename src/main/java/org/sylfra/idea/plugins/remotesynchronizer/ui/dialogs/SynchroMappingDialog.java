@@ -12,8 +12,6 @@ import java.awt.*;
 
 /**
  * Intended to get an included path
- *
- * @author <a href="mailto=sylfradev@yahoo.fr">Sylvain FRANCOIS</a>
  */
 public class SynchroMappingDialog extends AbstractPathDialog
 {

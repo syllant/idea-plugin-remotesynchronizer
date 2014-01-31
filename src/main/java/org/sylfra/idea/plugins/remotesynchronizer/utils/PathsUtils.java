@@ -4,14 +4,11 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VfsUtil;
 import com.intellij.openapi.vfs.VirtualFile;
-import org.sylfra.idea.plugins.remotesynchronizer.RemoteSynchronizerPlugin;
 
 import java.io.File;
 
 /**
  * Utility methods for paths management
- *
- * @author <a href="mailto=sylfradev@yahoo.fr">Sylvain FRANCOIS</a>
  */
 public class PathsUtils
 {

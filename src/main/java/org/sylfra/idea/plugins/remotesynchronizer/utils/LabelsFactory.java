@@ -10,8 +10,6 @@ import java.util.ResourceBundle;
  * <p/>
  * Labels are stored in properties files located in <b>RemoteSynchronizerPlugin</b>
  * package
- *
- * @author <a href="mailto=sylfradev@yahoo.fr">Sylvain FRANCOIS</a>
  */
 public class LabelsFactory
 {

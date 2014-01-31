@@ -29,8 +29,6 @@ import java.util.Stack;
  * Finally, added and modified filkes are copied.
  * <p/>
  * This thread may be interrupted, resumed or stopped
- *
- * @author <a href="mailto=sylfradev@yahoo.fr">Sylvain FRANCOIS</a>
  */
 public class SynchronizerThread
 {

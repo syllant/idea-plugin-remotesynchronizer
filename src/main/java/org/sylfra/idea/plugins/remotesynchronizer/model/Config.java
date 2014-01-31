@@ -9,8 +9,6 @@ import java.util.List;
 
 /**
  * Store plugin settings
- *
- * @author <a href="mailto=sylfradev@yahoo.fr">Sylvain FRANCOIS</a>
  */
 public class Config implements Serializable
 {

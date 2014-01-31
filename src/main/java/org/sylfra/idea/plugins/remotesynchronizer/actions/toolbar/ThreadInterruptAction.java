@@ -7,8 +7,6 @@ import org.sylfra.idea.plugins.remotesynchronizer.utils.Utils;
 
 /**
  * Interrupt current synchronization
- *
- * @author <a href="mailto=sylfradev@yahoo.fr">Sylvain FRANCOIS</a>
  */
 public class ThreadInterruptAction extends AnAction
 {

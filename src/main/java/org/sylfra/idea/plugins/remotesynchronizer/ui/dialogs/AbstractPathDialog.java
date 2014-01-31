@@ -17,8 +17,6 @@ import java.io.File;
 
 /**
  * Base dialog used to edit a file path
- *
- * @author <a href="mailto=sylfradev@yahoo.fr">Sylvain FRANCOIS</a>
  */
 public abstract class AbstractPathDialog extends DialogWrapper implements Disposable
 {

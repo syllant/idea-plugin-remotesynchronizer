@@ -21,8 +21,6 @@ import java.util.Map;
  * settings
  * <p/>
  * NB : paths are handled with '/'
- *
- * @author <a href="mailto=sylfradev@yahoo.fr">Sylvain FRANCOIS</a>
  */
 public class ConfigPathsManager
 {

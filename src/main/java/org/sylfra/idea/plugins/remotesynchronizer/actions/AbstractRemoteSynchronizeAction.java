@@ -15,8 +15,6 @@ import org.sylfra.idea.plugins.remotesynchronizer.utils.Utils;
 /**
  * Common code for {@link RemoteSynchronizeOpenedAction} and
  * {@link RemoteSynchronizeSelectedAction}
- *
- * @author <a href="mailto=sylfradev@yahoo.fr">Sylvain FRANCOIS</a>
  */
 public abstract class AbstractRemoteSynchronizeAction extends AnAction
 {

@@ -6,8 +6,6 @@ import org.sylfra.idea.plugins.remotesynchronizer.utils.LabelsFactory;
 
 /**
  * Contains 2 columns for included paths : source path and destination path
- *
- * @author <a href="mailto=sylfradev@yahoo.fr">Sylvain FRANCOIS</a>
  */
 public class SynchroPathsTable extends AbstractPathTable
 {

@@ -1,6 +1,4 @@
 /**
- * 
- * @author <a href="mailto=sylfradev@yahoo.fr">Sylvain FRANCOIS</a>
  */
 package org.sylfra.idea.plugins.remotesynchronizer.ui.dialogs;
 

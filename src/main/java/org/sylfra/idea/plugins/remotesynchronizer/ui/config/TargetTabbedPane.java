@@ -9,9 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-/**
- * @author <a href="mailto=sylfradev@yahoo.fr">Sylvain FRANCOIS</a>
- */
+/**/
 public final class TargetTabbedPane extends JTabbedPane
 {
   private ConfigPathsManager pathsManager;

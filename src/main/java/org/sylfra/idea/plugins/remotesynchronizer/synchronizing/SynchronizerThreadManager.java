@@ -18,8 +18,6 @@ import java.util.List;
  * When a new synchronizing action is invoked, an available thread is required.
  * If no thread is available (ie. all threads are running), a new thread is
  * created
- *
- * @author <a href="mailto=sylfradev@yahoo.fr">Sylvain FRANCOIS</a>
  */
 public class SynchronizerThreadManager
   implements ConfigListener

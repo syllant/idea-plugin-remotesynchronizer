@@ -12,8 +12,6 @@ import java.util.List;
 
 /**
  * Base table used to view paths
- *
- * @author <a href="mailto=sylfradev@yahoo.fr">Sylvain FRANCOIS</a>
  */
 public class AbstractPathTable extends JTable
 {

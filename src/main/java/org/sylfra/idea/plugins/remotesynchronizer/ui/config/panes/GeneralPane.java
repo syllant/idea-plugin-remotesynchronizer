@@ -13,9 +13,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/**
- * @author <a href="mailto=sylfradev@yahoo.fr">Sylvain FRANCOIS</a>
- */
+/**/
 public final class GeneralPane extends JPanel implements IConfigPane
 {
   private final Project project;

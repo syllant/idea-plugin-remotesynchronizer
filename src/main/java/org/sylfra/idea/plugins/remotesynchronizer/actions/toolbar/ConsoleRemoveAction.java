@@ -8,8 +8,6 @@ import org.sylfra.idea.plugins.remotesynchronizer.utils.Utils;
 
 /**
  * Remove the current console
- *
- * @author <a href="mailto=sylfradev@yahoo.fr">Sylvain FRANCOIS</a>
  */
 public class ConsoleRemoveAction extends AnAction
 {

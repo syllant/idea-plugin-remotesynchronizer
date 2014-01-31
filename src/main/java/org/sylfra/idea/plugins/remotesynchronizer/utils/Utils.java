@@ -13,8 +13,6 @@ import java.io.*;
 
 /**
  * Misc utility methods
- *
- * @author <a href="mailto=sylfradev@yahoo.fr">Sylvain FRANCOIS</a>
  */
 public class Utils
 {

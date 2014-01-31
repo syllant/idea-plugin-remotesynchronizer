@@ -7,9 +7,7 @@ import org.sylfra.idea.plugins.remotesynchronizer.utils.LabelsFactory;
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * @author <a href="mailto=sylfradev@yahoo.fr">Sylvain FRANCOIS</a>
- */
+/**/
 public final class LogPane extends JPanel implements IConfigPane
 {
   private final static String[] FONT_SIZES =

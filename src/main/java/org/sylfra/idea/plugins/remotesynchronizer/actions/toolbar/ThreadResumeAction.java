@@ -7,8 +7,6 @@ import org.sylfra.idea.plugins.remotesynchronizer.utils.Utils;
 
 /**
  * Resume current synchronization
- *
- * @author <a href="mailto=sylfradev@yahoo.fr">Sylvain FRANCOIS</a>
  */
 public class ThreadResumeAction extends AnAction
 {

@@ -5,8 +5,6 @@ import org.sylfra.idea.plugins.remotesynchronizer.utils.LabelsFactory;
 
 /**
  * Intended to get an excluded delete path
- *
- * @author <a href="mailto=sylfradev@yahoo.fr">Sylvain FRANCOIS</a>
  */
 public class ExcludedDeletePathDialog extends ExcludedPathDialog
 {

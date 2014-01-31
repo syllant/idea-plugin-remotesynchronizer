@@ -5,8 +5,6 @@ import org.sylfra.idea.plugins.remotesynchronizer.model.SyncronizingStatsInfo;
 
 /**
  * Used to handle synchronizing events
- *
- * @author <a href="mailto=sylfradev@yahoo.fr">Sylvain FRANCOIS</a>
  */
 public interface SynchronizerThreadListener
 {

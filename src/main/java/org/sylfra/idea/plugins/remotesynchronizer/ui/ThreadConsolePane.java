@@ -9,8 +9,6 @@ import javax.swing.*;
 
 /**
  * Thread consoles container
- *
- * @author <a href="mailto=sylfradev@yahoo.fr">Sylvain FRANCOIS</a>
  */
 public class ThreadConsolePane extends JTabbedPane
 {

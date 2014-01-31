@@ -31,8 +31,6 @@ import java.net.URL;
 
 /**
  * Plugin main class
- *
- * @author <a href="mailto=sylfradev@yahoo.fr">Sylvain FRANCOIS</a>
  */
 public class RemoteSynchronizerPlugin
   implements ProjectComponent, Configurable, JDOMExternalizable

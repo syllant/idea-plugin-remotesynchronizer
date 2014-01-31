@@ -20,8 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author <a href="mailto:syllant@gmail.com">Sylvain FRANCOIS</a>
- * @version $Id$
  */
 public class DefaultJavaSupport extends AbstractProjectComponent implements IJavaSupport
 {

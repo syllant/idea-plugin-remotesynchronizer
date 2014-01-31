@@ -7,8 +7,6 @@ import org.sylfra.idea.plugins.remotesynchronizer.RemoteSynchronizerPlugin;
 
 /**
  * Synchronize all project files
- *
- * @author <a href="mailto=sylfradev@yahoo.fr">Sylvain FRANCOIS</a>
  */
 public class RemoteSynchronizeAllAction extends AbstractRemoteSynchronizeAction
 {

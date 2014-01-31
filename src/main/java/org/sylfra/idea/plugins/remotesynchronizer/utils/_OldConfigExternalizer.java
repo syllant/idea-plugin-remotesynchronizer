@@ -11,8 +11,6 @@ import java.util.List;
 /**
  * Reads and writes configuration object
  * For 1.5 compatibility
- *
- * @author <a href="mailto=sylfradev@yahoo.fr">Sylvain FRANCOIS</a>
  * @deprecated should be removed with next major release. Only kept to be able to read
  *             old settings
  */
