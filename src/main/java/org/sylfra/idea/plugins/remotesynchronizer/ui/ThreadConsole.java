@@ -203,24 +203,29 @@ public class ThreadConsole extends JScrollPane
     append(s, simulationMode ? SIMULATION_STYLE : DEFAULT_STYLE);
   }
 
-  private void append(String s, String styleName)
+  private void append(final String s, final String styleName)
   {
-    try
+    SwingUtilities.invokeLater(new Runnable()
     {
-      Document doc = textPane.getDocument();
-      int start = doc.getLength();
-      // doc.insertString(start, s + "\n", textPane.getStyle(styleName));
-      doc.insertString(start, "*" + s + "\n", textPane.getStyle(styleName));
-      doc.remove(start, 1);
+      public void run()
+      {
+        try
+        {
+          Document doc = textPane.getDocument();
+          int start = doc.getLength();
+          // doc.insertString(start, s + "\n", textPane.getStyle(styleName));
+          doc.insertString(start, "*" + s + "\n", textPane.getStyle(styleName));
+          doc.remove(start, 1);
 
-      // Add a temporary '*' and then remove it because of a bug of the
-      // StyledEditorKit, see the test class
-    }
-    catch (BadLocationException e)
-    {
-      e.printStackTrace();
-    }
-    scrollToEnd();
+          // Add a temporary '*' and then remove it because of a bug of the
+          // StyledEditorKit, see the test class
+        }
+        catch (BadLocationException ignored)
+        {
+        }
+        scrollToEnd();
+      }
+    });
   }
 
   private void scrollToEnd()
@@ -336,43 +341,37 @@ public class ThreadConsole extends JScrollPane
   {
     final ConfigPathsManager pathsManager = thread.getPlugin().getPathManager();
 
-    SwingUtilities.invokeLater(new Runnable()
+    String tmpSrc = pathsManager.toPresentablePath(src);
+    String tmpDest = dest;
+
+    if (tmpDest != null)
     {
-      public void run()
+      tmpDest = pathsManager.toPresentablePath(dest);
+    }
+
+    String time = TIME_FORMATTER.format(new Date());
+    String copyTypeInfo = (copyType == -1) ? "" : COPY_INFOS[copyType];
+
+    if (tmpDest == null)
+    {
+      if (config.getLogOptions().isLogExludedPaths())
       {
-        String tmpSrc = pathsManager.toPresentablePath(src);
-        String tmpDest = dest;
-
-        if (tmpDest != null)
-        {
-          tmpDest = pathsManager.toPresentablePath(dest);
-        }
-
-        String time = TIME_FORMATTER.format(new Date());
-        String copyTypeInfo = (copyType == -1) ? "" : COPY_INFOS[copyType];
-
-        if (tmpDest == null)
-        {
-          if (config.getLogOptions().isLogExludedPaths())
-          {
-            append(time + " " + copyTypeInfo + " "
-              + "(" + LabelsFactory.get(LabelsFactory.MSG_FROM)
-              + " " + tmpSrc + ")");
-          }
-        }
-        else if ((copyType != SynchronizerThread.TYPE_COPY_IDENTICAL)
-          || (config.getLogOptions().isLogIdenticalPaths()))
-        {
-          append(time + " " + copyTypeInfo + " " + tmpDest);
-          if (config.getLogOptions().isLogSrcPaths())
-          {
-            append("[ " + LabelsFactory.get(LabelsFactory.MSG_FROM)
-              + " " + tmpSrc + " ]");
-          }
-        }
-        cleared = false;
+        append(time + " " + copyTypeInfo + " "
+          + "(" + LabelsFactory.get(LabelsFactory.MSG_FROM)
+          + " " + tmpSrc + ")");
       }
-    });
+    }
+    else if ((copyType != SynchronizerThread.TYPE_COPY_IDENTICAL)
+      || (config.getLogOptions().isLogIdenticalPaths()))
+    {
+      append(time + " " + copyTypeInfo + " " + tmpDest);
+      if (config.getLogOptions().isLogSrcPaths())
+      {
+        append("[ " + LabelsFactory.get(LabelsFactory.MSG_FROM)
+          + " " + tmpSrc + " ]");
+      }
+    }
+    cleared = false;
   }
 
   public void fileDeleting(SynchronizerThread thread, String path)

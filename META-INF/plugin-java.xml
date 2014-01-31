@@ -1,0 +1,8 @@
+<idea-plugin>
+  <project-components>
+    <component>
+      <interface-class>org.sylfra.idea.plugins.remotesynchronizer.javasupport.IJavaSupport</interface-class>
+      <implementation-class>org.sylfra.idea.plugins.remotesynchronizer.javasupport.DefaultJavaSupport</implementation-class>
+    </component>
+  </project-components>
+</idea-plugin>

@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="RemoteSynchronizer" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
     <module name="idea-plugin-remotesynchronizer" />
-    <option name="VM_PARAMETERS" value=" -Xms128m -Xmx512m -XX:MaxPermSize=250m -XX:ReservedCodeCacheSize=64m -ea" />
+    <option name="VM_PARAMETERS" value=" -Xms128m -Xmx512m -XX:MaxPermSize=250m -XX:ReservedCodeCacheSize=64m -ea -Duser.language=en -Duser.country=US" />
     <option name="PROGRAM_PARAMETERS" value="" />
     <alternative-path path="$KALISTICK_TECHBOX_DIR$/java/tools/IntellijIDEA-12" alternative-path-enabled="false" />
     <log_file path="D:/_syfranco/config/IntellijIdea-plugins/system/plugins-sandbox/system/log/idea.log" checked="false" skipped="true" show_all="false" alias="IDEA LOG" />

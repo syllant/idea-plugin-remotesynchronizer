@@ -243,7 +243,7 @@ public class SynchronizerThread
 
         if (pathManager.isJavaSource(f))
         {
-          List<String> classFilePaths = pathManager.getClassFilePaths(f);
+          List<String> classFilePaths = plugin.getJavaSupport().getClassFilePaths(f);
           if (classFilePaths != null)
           {
             for (String path : classFilePaths)

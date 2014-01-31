@@ -14,6 +14,8 @@ import com.intellij.openapi.wm.ToolWindowManager;
 import com.intellij.ui.content.Content;
 import com.intellij.ui.content.ContentFactory;
 import org.jdom.Element;
+import org.sylfra.idea.plugins.remotesynchronizer.javasupport.IJavaSupport;
+import org.sylfra.idea.plugins.remotesynchronizer.javasupport.NoJavaSupport;
 import org.sylfra.idea.plugins.remotesynchronizer.model.Config;
 import org.sylfra.idea.plugins.remotesynchronizer.synchronizing.SynchronizerThreadManager;
 import org.sylfra.idea.plugins.remotesynchronizer.ui.ThreadConsolePane;
@@ -54,12 +56,19 @@ public class RemoteSynchronizerPlugin
   private ThreadConsolePane consolePane;
   // Settings panel
   private ConfigPanel panel;
+  private IJavaSupport javaSupport;
 
   public RemoteSynchronizerPlugin(Project project)
   {
     this.project = project;
 
     pathManager = new ConfigPathsManager(this);
+    javaSupport = project.getComponent(IJavaSupport.class);
+    if (javaSupport == null)
+    {
+      javaSupport = new NoJavaSupport();
+    }
+
     consolePane = new ThreadConsolePane(this);
     copierThreadManager = new SynchronizerThreadManager(this);
   }
@@ -192,6 +201,11 @@ public class RemoteSynchronizerPlugin
   public ConfigExternalizer getConfigExternalizer()
   {
     return project.getComponent(ConfigExternalizer.class);
+  }
+
+  public IJavaSupport getJavaSupport()
+  {
+    return javaSupport;
   }
 
   public static URL getResource(String relativePath)

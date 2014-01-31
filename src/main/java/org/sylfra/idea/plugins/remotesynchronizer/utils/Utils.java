@@ -1,7 +1,7 @@
 package org.sylfra.idea.plugins.remotesynchronizer.utils;
 
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.DataKeys;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.project.Project;
 import org.sylfra.idea.plugins.remotesynchronizer.RemoteSynchronizerPlugin;
 import org.sylfra.idea.plugins.remotesynchronizer.synchronizing.SynchronizerThread;
@@ -68,7 +68,7 @@ public class Utils
 
   public static RemoteSynchronizerPlugin getPlugin(AnActionEvent e)
   {
-    Project project = DataKeys.PROJECT.getData(e.getDataContext());
+    Project project = e.getData(CommonDataKeys.PROJECT);
     return (project == null)
       ? null
       : RemoteSynchronizerPlugin.getInstance(project);
