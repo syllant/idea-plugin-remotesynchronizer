@@ -4,17 +4,29 @@
     Instead of manually copying files from your project to their runtime location using external
     tools (command line, file explorer, ...), RemoteSynchronizer launches copies from Idea, using
     paths customized for project. It is also able to delete obsolete files on remote locations.</description>
-  <version>1.9.1</version>
+  <version>1.9.2</version>
   <vendor email="syllant@gmail.com" url="https://github.com/syllant">Sylvain FRANCOIS</vendor>
   <idea-version since-build="133.193"/>
   <depends>com.intellij.modules.lang</depends>
   <depends optional="true" config-file="plugin-java.xml">com.intellij.modules.java</depends>
 
   <change-notes><![CDATA[<html>
-      <ul>
-        <li>Fixed compatibility with products other than IDEA</li>
-      </ul>
-    </html>]]></change-notes>
+<html>
+  <b>1.9.2</b> (02/19/2014)
+  <ul>
+    <li>Fix: <a href="https://github.com/syllant/idea-plugin-revu/issues/10">Support for 1.6 JVM</a>
+  </ul>
+
+  <b>1.9.1</b> (01/31/2014)
+  <ul>
+    <li>Fix: Fixed compatibility with products other than IDEA
+  </ul>
+
+  <b>1.9</b> (01/29/2014)
+  <ul>
+    <li>New: <a href="https://github.com/syllant/idea-plugin-revu/issues/8">New option "Synchronize on save"</a>
+  </ul>
+</html>]]></change-notes>
 
   <project-components>
     <component>
