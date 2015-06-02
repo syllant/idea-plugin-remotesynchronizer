@@ -6,9 +6,9 @@ RemoteSynchronizer plugin allows you to synchronize files with remote locations.
 
 This plugin is based on paths mappings which link project files/directories and their target(s). After you have configured these paths from project settings, you just invoke one of the RemoteSynchronizer actions, using popup menu from any files selection, from the project view pane or from current editor :
 
-* **Synchronize this** : synchronize all selected files/dirs
-* **Synchronize all opened** : synchronize all files opened in editors
-* **Synchronize all** : synchronize all files in the project.
+* **Synchronize this**: synchronize all selected files/dirs
+* **Synchronize all opened**: synchronize all files opened in editors
+* **Synchronize all**: synchronize all files in the project.
 
 First, obsolete files, i.e. files which no longer exist within the projet, will be deleted in target directories mapped with current selection. Then, selected files which are included in paths mappings will be copied if their date is different from the date of their target. All operations will be logged in dedicated consoles.
 
@@ -17,7 +17,7 @@ First, obsolete files, i.e. files which no longer exist within the projet, will 
 > To synchronize a java class file, you can select the source file (from current editor, project explorer, ...) as well as the class file (c.f. samples).
 
 ## Settings
-Settings are defined from Project settings panel.
+Settings are defined in *Preferences* (formerly *Project settings*), just look for "RemoteSynchronizer".
 
 Import/Export buttons allow to backup plugin configuration using XML files. Paths may be stored as absolute or relative depending on chosen option.
 
