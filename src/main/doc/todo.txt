@@ -1,3 +1,3 @@
-* tooltip : presentablepath
-* continuous copy
-* show a floating msg instead of window (new option)
+* This plugin has mostly been written in 2003-2004! Revamp the whole codebase to adapt to the current APIs and the new IntelliJ features: notifications, UI components, etc.
+* Continuous copy
+* Support for alternates languages (e.g. Groovy)
