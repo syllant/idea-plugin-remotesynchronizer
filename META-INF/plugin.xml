@@ -14,7 +14,8 @@
 <html>
   <b>1.10</b> (03/20/2016)
   <ul>
-    <li>Fix: <a href="https://github.com/syllant/idea-plugin-revu/issues/20">Support for IntelliJ 2016: preferences now displayed in the "Tools" group</a>
+    <li>Fix: <a href="https://github.com/syllant/idea-plugin-remotesynchronizer/issues/20">Support for IntelliJ 2016: preferences now displayed in the "Tools" group</a>
+    <li>Fix: <a href="https://github.com/syllant/idea-plugin-remotesynchronizer/issues/16">Remove default key shortcuts and let users define unused combinations!</a>
   </ul>
 
   <b>1.9.2</b> (02/19/2014)
@@ -29,7 +30,7 @@
 
   <b>1.9</b> (01/29/2014)
   <ul>
-    <li>New: <a href="https://github.com/syllant/idea-plugin-revu/issues/8">New option "Synchronize on save"</a>
+    <li>New: <a href="https://github.com/syllant/idea-plugin-remotesynchronizer/issues/8">New option "Synchronize on save"</a>
   </ul>
 </html>]]></change-notes>
 
@@ -99,19 +100,16 @@
         class="org.sylfra.idea.plugins.remotesynchronizer.actions.RemoteSynchronizeSelectedAction"
         text="Synchronize this"
         description="Do remote synchronization for selected files">
-        <keyboard-shortcut keymap="$default" first-keystroke="control MULTIPLY"/>
       </action>
       <action id="RemoteSynchronize.SynchronizeOpenedAction"
         class="org.sylfra.idea.plugins.remotesynchronizer.actions.RemoteSynchronizeOpenedAction"
         text="Synchronize all opened"
         description="Do remote synchronization for all opened files">
-        <keyboard-shortcut keymap="$default" first-keystroke="control shift MULTIPLY"/>
       </action>
       <action id="RemoteSynchronize.SynchronizeAllAction"
         class="org.sylfra.idea.plugins.remotesynchronizer.actions.RemoteSynchronizeAllAction"
         text="Synchronize all"
         description="Do remote synchronization for all project files">
-        <keyboard-shortcut keymap="$default" first-keystroke="control alt MULTIPLY"/>
       </action>
       <add-to-group group-id="EditorPopupMenu" anchor="last"/>
       <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
