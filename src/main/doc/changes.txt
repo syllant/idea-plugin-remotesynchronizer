@@ -2,6 +2,7 @@ Change history
 
 *  1.10 (03/20/2016)
       o Upgraded for IntelliJ 2016
+      o Remove default key shortcuts
 
 *  1.9.2 (02/19/2014)
       o Fix: Support for 1.6 JVM
