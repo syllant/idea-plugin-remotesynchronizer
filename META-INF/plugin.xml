@@ -4,7 +4,7 @@
     Instead of manually copying files from your project to their runtime location using external
     tools (command line, file explorer, ...), RemoteSynchronizer launches copies from Idea, using
     paths customized for project. It is also able to delete obsolete files on remote locations.</description>
-  <version>1.9.2</version>
+  <version>1.10</version>
   <vendor email="syllant@gmail.com" url="https://github.com/syllant">Sylvain FRANCOIS</vendor>
   <idea-version since-build="133.193"/>
   <depends>com.intellij.modules.lang</depends>
@@ -12,6 +12,11 @@
 
   <change-notes><![CDATA[<html>
 <html>
+  <b>1.10</b> (03/20/2016)
+  <ul>
+    <li>Fix: <a href="https://github.com/syllant/idea-plugin-revu/issues/20">Support for IntelliJ 2016: preferences now displayed in the "Tools" group</a>
+  </ul>
+
   <b>1.9.2</b> (02/19/2014)
   <ul>
     <li>Fix: <a href="https://github.com/syllant/idea-plugin-revu/issues/10">Support for 1.6 JVM</a>
@@ -40,9 +45,12 @@
 
   <extensions defaultExtensionNs="com.intellij">
     <projectService
-    serviceInterface="org.sylfra.idea.plugins.remotesynchronizer.utils.ConfigStateComponent"
-    serviceImplementation="org.sylfra.idea.plugins.remotesynchronizer.utils.ConfigStateComponent"/>
-    <projectConfigurable id="RemoteSynchronizer" displayName="Remote Synchronizer" instance="org.sylfra.idea.plugins.remotesynchronizer.RemoteSynchronizerPlugin"/>
+      serviceInterface="org.sylfra.idea.plugins.remotesynchronizer.utils.ConfigStateComponent"
+      serviceImplementation="org.sylfra.idea.plugins.remotesynchronizer.utils.ConfigStateComponent"/>
+    <projectConfigurable id="RemoteSynchronizer"
+                         displayName="RemoteSynchronizer"
+                         groupId="tools"
+                         instance="org.sylfra.idea.plugins.remotesynchronizer.RemoteSynchronizerPlugin"/>
   </extensions>
 
   <!-- Component's actions -->

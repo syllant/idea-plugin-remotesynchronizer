@@ -27,6 +27,9 @@
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_5" assert-keyword="true" jdk-15="true" project-jdk-name="IDEA IU (last / 1.6)" project-jdk-type="IDEA JDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
+  <component name="PropertiesSeparatorManager">
+    <file url="resourceBundle:file:///Users/sfrancois/projects/IntellijIDEA/remotesynchronizer/idea-plugin-remotesynchronizer/src/main/java/org/sylfra/idea/plugins/remotesynchronizer/Labels" separator="\u005f" />
+  </component>
   <component name="SvnBranchConfigurationManager">
     <option name="myConfigurationMap">
       <map>
