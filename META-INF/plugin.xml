@@ -38,10 +38,11 @@
     </component>
   </project-components>
 
-  <extensions xmlns="com.intellij">
+  <extensions defaultExtensionNs="com.intellij">
     <projectService
-      serviceInterface="org.sylfra.idea.plugins.remotesynchronizer.utils.ConfigStateComponent"
-      serviceImplementation="org.sylfra.idea.plugins.remotesynchronizer.utils.ConfigStateComponent"/>
+    serviceInterface="org.sylfra.idea.plugins.remotesynchronizer.utils.ConfigStateComponent"
+    serviceImplementation="org.sylfra.idea.plugins.remotesynchronizer.utils.ConfigStateComponent"/>
+    <projectConfigurable id="RemoteSynchronizer" displayName="Remote Synchronizer" instance="org.sylfra.idea.plugins.remotesynchronizer.RemoteSynchronizerPlugin"/>
   </extensions>
 
   <!-- Component's actions -->
