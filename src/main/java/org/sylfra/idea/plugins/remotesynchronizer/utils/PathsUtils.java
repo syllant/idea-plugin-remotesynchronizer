@@ -80,6 +80,13 @@ public class PathsUtils
   {
     VirtualFile projectDir = project.getBaseDir();
 
+    path = path.replace(PATTERN_PROJECT_DIR, projectDir.getPath());
+
+    if (path.equals(projectDir.getPath()))
+    {
+      return PATTERN_PROJECT_DIR + "/";
+    }
+
     StringBuilder buffer = new StringBuilder();
     String relPath = null;
     while ((projectDir != null)

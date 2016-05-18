@@ -3,6 +3,7 @@ Change history
 * 1.11 (05/17/2016)
       o Fix: <a href="https://github.com/syllant/idea-plugin-remotesynchronizer/issues/18">Synchronization 'on save' causes entire IDE to hang #18</a>
       o Fix: <a href="https://github.com/syllant/idea-plugin-remotesynchronizer/issues/26">Remove French translation</a>
+      o Fix: <a href="https://github.com/syllant/idea-plugin-remotesynchronizer/issues/28">Invalid expansion for $PROJECT_DIR$</a>
 
 *  1.10 (03/20/2016)
       o Upgraded for IntelliJ 2016
