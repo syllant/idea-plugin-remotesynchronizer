@@ -14,7 +14,7 @@
 <html>
   <b>1.11</b> (05/17/2016)
   <ul>
-    <li>Fix: <a href="https://github.com/syllant/idea-plugin-remotesynchronizer/issues/18">Synchronization 'on save' causes entire IDE to hang #18</a>
+    <li>Fix: <a href="https://github.com/syllant/idea-plugin-remotesynchronizer/issues/18">Synchronization 'on save' causes entire IDE to hang</a>
     <li>Fix: <a href="https://github.com/syllant/idea-plugin-remotesynchronizer/issues/26">Remove French translation</a>
     <li>Fix: <a href="https://github.com/syllant/idea-plugin-remotesynchronizer/issues/28">Invalid expansion for $PROJECT_DIR$</a>
   </ul>
