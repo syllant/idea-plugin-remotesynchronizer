@@ -8,6 +8,7 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.InvalidDataException;
 import com.intellij.openapi.util.JDOMExternalizable;
 import com.intellij.openapi.util.WriteExternalException;
+import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowAnchor;
 import com.intellij.openapi.wm.ToolWindowManager;
@@ -219,5 +220,18 @@ public class RemoteSynchronizerPlugin
   public ConfigStateComponent getStateComponent()
   {
     return ServiceManager.getService(project, ConfigStateComponent.class);
+  }
+
+  public void launchSyncIfAllowed(VirtualFile[] files)
+  {
+    // Check if configuration allows concurrent runs when a synchro is running
+    if ((!getStateComponent().getState().getGeneralOptions().isAllowConcurrentRuns())
+      && (copierThreadManager.hasRunningSynchro()))
+    {
+      consolePane.doPopup();
+      return;
+    }
+
+    copierThreadManager.launchSynchronization(files);
   }
 }

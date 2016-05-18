@@ -8,7 +8,6 @@ import com.intellij.openapi.fileEditor.FileDocumentManager;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
 import org.sylfra.idea.plugins.remotesynchronizer.RemoteSynchronizerPlugin;
-import org.sylfra.idea.plugins.remotesynchronizer.synchronizing.SynchronizerThreadManager;
 import org.sylfra.idea.plugins.remotesynchronizer.utils.ConfigPathsManager;
 import org.sylfra.idea.plugins.remotesynchronizer.utils.Utils;
 
@@ -28,22 +27,13 @@ public abstract class AbstractRemoteSynchronizeAction extends AnAction
     if (files == null)
       return;
 
-    // Checks configuration allows concurent runs when a synchro is running
-    if ((!plugin.getConfig().getGeneralOptions().isAllowConcurrentRuns())
-      && (plugin.getCopierThreadManager().hasRunningSynchro()))
-    {
-      plugin.getConsolePane().doPopup();
-      return;
-    }
-
     if (plugin.getConfig().getGeneralOptions().isSaveBeforeCopy())
       FileDocumentManager.getInstance().saveAllDocuments();
 
     if (!plugin.getCopierThreadManager().hasRunningSynchro())
       refreshVfsIfJavaSelected(files, plugin.getPathManager());
 
-    SynchronizerThreadManager manager = plugin.getCopierThreadManager();
-    manager.launchSynchronization(files);
+    plugin.launchSyncIfAllowed(files);
   }
 
   private void refreshVfsIfJavaSelected(final VirtualFile[] files,
