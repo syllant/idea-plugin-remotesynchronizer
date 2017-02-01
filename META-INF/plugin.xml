@@ -4,7 +4,7 @@
     Instead of manually copying files from your project to other locations using external
     tools (command line, file explorer, etc.), RemoteSynchronizer launches copies from your IDE, relying
     on mappings defined for your project. It can also delete obsolete files on remote locations.</description>
-  <version>1.11</version>
+  <version>1.12</version>
   <vendor email="syllant@gmail.com" url="https://github.com/syllant">Sylvain Francois</vendor>
   <idea-version since-build="133.193"/>
   <depends>com.intellij.modules.lang</depends>
@@ -12,6 +12,11 @@
 
   <change-notes><![CDATA[<html>
 <html>
+  <b>1.12</b> (01/31/2017)
+  <ul>
+    <li>Fix: <a href="https://github.com/syllant/idea-plugin-remotesynchronizer/issues/31">Fix a packaging issue causing class files not to be synchronized</a>
+  </ul>
+
   <b>1.11</b> (05/17/2016)
   <ul>
     <li>Fix: <a href="https://github.com/syllant/idea-plugin-remotesynchronizer/issues/18">Synchronization 'on save' causes entire IDE to hang</a>

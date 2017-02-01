@@ -1,5 +1,8 @@
 Change history
 
+* 1.12 (01/31/2017)
+      o Fix: <a href="https://github.com/syllant/idea-plugin-remotesynchronizer/issues/31">Fix a packaging issue causing class files not to be synchronized</a>
+
 * 1.11 (05/17/2016)
       o Fix: <a href="https://github.com/syllant/idea-plugin-remotesynchronizer/issues/18">Synchronization 'on save' causes entire IDE to hang</a>
       o Fix: <a href="https://github.com/syllant/idea-plugin-remotesynchronizer/issues/26">Remove French translation</a>
